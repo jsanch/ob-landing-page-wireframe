@@ -42,6 +42,7 @@
             #map
             .lookup-panel
               .well.well-sm
+                Debug:
                 .regionName
                   #mapRegionName.hovertooltip 
 
@@ -65,10 +66,11 @@
                   %span{"aria-hidden" => "true"} &#215;
                 %h4#myModalLabel.modal-title Modal title
               .modal-body
-                \...
-              .modal-footer
-                %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
-                %button.btn.btn-primary{:type => "button"} Save changes
+                #modal-content
+                  ="Hell"
+              / .modal-footer
+              /   %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+              /   %button.btn.btn-primary{:type => "button"} Save changes
 
 
 

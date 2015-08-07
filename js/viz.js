@@ -40,7 +40,6 @@ function ColoradoMap(elementId) {
                     map.centerMapProjection();
                     map.drawDistricts();
                     map.animateDistricts();
-                    ma
                 });
             });
         });
@@ -281,11 +280,18 @@ function ColoradoMap(elementId) {
     }
 
     this.BOCES_OnClick = function(d) {
-      console.log(d);
-      $('#80731').click();
+      $('#myModal .modal-title').text(d.properties['Name']);
+
+      $('#modal-content').text('link to financial transparency app....');
+
+      $('#myModal').modal('toggle');
     }
     this.district_OnClick = function(d) {
-      // console.log("Schools: " + d.properties.schools);
+
+      $('#myModal .modal-title').text(d.properties['NAME']);
+
+      $('#modal-content').text('link to financial transparency app....');
+
       $('#myModal').modal('toggle');
     }
 
@@ -293,6 +299,5 @@ function ColoradoMap(elementId) {
 
     var map = new ColoradoMap('map');
     map.initMap(); 
-    console.log("eh, why");
 
 });

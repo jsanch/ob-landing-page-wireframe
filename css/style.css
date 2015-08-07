@@ -50,7 +50,11 @@ p, div {
     height: auto;
     line-height: 60px; }
 
-
+.lookup-panel {
+    height: 50%;
+    width: 50%;
+    text-align: center;
+}
 
 /*    
  *
