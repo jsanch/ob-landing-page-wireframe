@@ -1,0 +1,18 @@
+%html
+  %head
+    %script{:charset => "utf-8", :src => "js/jquery.js"}
+    %script{:charset => "utf-8", :src => "js/d3.js"}
+    %script{:charset => "utf-8", :src => "js/topojson.v1.js"}
+    %script{:charset => "utf-8", :src => "js/moment.js"}
+    %meta{:charset => "utf-8"}/
+    %link{:href => "http://fonts.googleapis.com/css?family=Lato", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "css/style.css", :rel => "stylesheet", :type => "text/css"}/
+  %body
+    %h1 CDE Map 
+    #name.countyname Countya
+    %button#all.btn.btn-default.pull-right Show Boces And Districts
+    %button#BOCES.btn.btn-default.pull-right Show Boces
+    %button#districts.btn.btn-default.pull-right Show Districts
+    #map.fullscreen-map
+  / Must include after document loads.
+  %script{:src => "js/viz.js"}

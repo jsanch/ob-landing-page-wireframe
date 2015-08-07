@@ -1,3 +1,5 @@
+$( document ).ready(function() {
+
 function ColoradoMap(elementId) {
 
     this.divId = elementId;
@@ -5,9 +7,11 @@ function ColoradoMap(elementId) {
 
     this.initMap = function() {
 
+
         var map = this;
         var el = document.getElementById(map.divId);
 
+        console.log(el.clientHeight);
         // Colorado Map Dimensions: 960x1200 (width x height)
         // Use this to scale the map up/down depending on
         // size of map container.
@@ -196,7 +200,7 @@ function ColoradoMap(elementId) {
             .on('mouseover', function(d) {
               $('#name').text("School District: " + d.properties['NAME']);
             })
-            .on('click', map.BOCES_OnClick)
+            .on('click', map.district_OnClick)
     };
 
     this.animateDistricts = function() {
@@ -278,10 +282,13 @@ function ColoradoMap(elementId) {
       $('#80731').click();
     }
     this.district_OnClick = function(d) {
-      console.log(d);
+      console.log("Schools: " + d.properties.schools);
     }
 
 }; // ColoradoMap
 
-var map = new ColoradoMap('map');
-map.initMap(); 
+    var map = new ColoradoMap('map');
+    map.initMap(); 
+    console.log("eh, why");
+
+});
