@@ -1,20 +1,122 @@
 html {
     font-family: Lato;
 }
+/* BASE CSS*/
+/*
+ * Color Theme: http://www.colourlovers.com/palette/1930/cheer_up_emo_kid
+ * Mighty Slate: #556270
+ * Pacifica: #4ecdc4
+ * Apple Chic: #c7f464;
+ * Cheery Pink: #ff6b6b;
+ * Grandma's Pillow: #c44d58
+ */
 
-/*Template*/
-svg {
-  font: 10px sans-serif;
+/*.map-container {
+	width: 50%;
+	height: 80%;
+}*/
+.fullscreen-map {
+    height: 100%;
+    width: 100%;
+    margin: auto;
 }
 
-.overlay {
-  fill: none;
-  pointer-events:all;
+
+
+
+/* 03_COUNTIES CSS */
+/*body {
+    background: #cccccd url(../images/linedpaper.png) top left repeat;
+    color: #66696c;
+}
+*/
+.district {
+    cursor: pointer;
+    fill: #66696c;
+    fill-opacity: 0;
+    shape-rendering: geometricPrecision;
+    stroke: #66696c;
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
+    stroke-opacity: 1.0;
+    stroke-width: 0.5px;
+}
+.district:hover {
+    fill: green;
+    fill-opacity: 0.45;
 }
 
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
+.RSA {
+    /*cursor: pointer;*/
+    fill: #66696c;
+    fill-opacity: 0;
+    shape-rendering: geometricPrecision;
+    stroke: #66696c;
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
+    stroke-opacity: 1.0;
+    stroke-width: 0.5px;
+}
+
+/*.RSA:hover {
+    fill: #66696c;
+    fill-opacity: 0.45;
+}
+*/
+.BOCES {
+    cursor: pointer;
+    fill: green;
+    fill-opacity: .5;
+    stroke: #fff;
+    stroke-width: .5px;
+}
+.BOCES:hover {
+    stroke: #000;
+}
+
+.BOCES-name {
+  color: black;
+  font-size: 8px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* MODAL */
+#test, .modal {
+    width: 600px;
+    padding: 30px; 
+    display:none;
+    background: #FFF;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.7); 
+    -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.7); 
+    -moz-box-shadow: 0 0px 4px rgba(0,0,0,0.7);       
+}
+
+
+#test p, .modal p { color: #666; text-shadow: none; }
+
+.modal_close { position: absolute; top: 12px; right: 12px; display: block; width: 14px; height: 14px; background: url(../img/modal_close.png); z-index: 2; }
+
+/*---------------------------------------
+
+	LEAN MODAL
+
+-----------------------------------------*/
+
+#lean_overlay {
+    position: fixed;
+    z-index: 10000;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #000;
+    display: none;
 }

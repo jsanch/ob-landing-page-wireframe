@@ -1,7 +1,15 @@
 <html>
   <head>
+    <script charset='utf-8' src="js/jquery.js"></script>
     <script charset='utf-8' src='js/d3.js'></script>
     <script charset='utf-8' src="js/topojson.v1.js"></script>
+    <script charset='utf-8' src="js/moment.js"></script>
+    <script charset='utf-8' src="js/jquery.leanModal.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+          $('a[rel*=leanModal]').leanModal({ top : 200, closeButton: ".modal_close" });   
+      });
+    </script>
     <meta charset='utf-8'>
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href='css/style.css' rel='stylesheet' type='text/css'>
@@ -10,7 +18,23 @@
     <h1> 
      CDE Map
     </h1>
-    <!-- <svg></svg> -->
+    <div id="name" class="countyname">County</div>
+    <button class="btn btn-default pull-right" id="all"> Show Boces And Districts </button>
+    <button class="btn btn-default pull-right" id="BOCES"> Show Boces </button>    
+    <button class="btn btn-default pull-right" id="districts"> Show Districts </button>
+    <!-- <div id="map-container"> -->
+      <div id="map" class="fullscreen-map"></div> 
+    <!-- </div> -->
+
+
+  <a id="go" rel="leanModal" name="test" href="#test">Basic Modal Test</a>
+  <div id="test">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum libero purus, convallis nec vestibulum eget, luctus vitae purus. Vestibulum non mauris et sem vulputate pellentesque ac a turpis. Ut vel lacus vitae justo vestibulum lobortis. Nunc ipsum ipsum, laoreet id dictum nec, fermentum vel purus. Maecenas nisl felis, faucibus non rutrum eu, sollicitudin sed ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent dignissim lacinia tempus. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Nulla accumsan pellentesque velit, a malesuada diam tristique a. Fusce eleifend magna erat, et imperdiet orci. Quisque sapien mauris, malesuada eu tristique pulvinar, placerat id ligula. Vivamus vitae viverra nulla. Donec eget turpis vel erat malesuada sodales.</p>
+  </div>
+        
+</div>
+
+
   </body>
   <!-- Must include after document loads. -->
   <script src='js/viz.js'></script>
