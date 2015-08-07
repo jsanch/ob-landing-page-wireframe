@@ -15,8 +15,11 @@ function ColoradoMap(elementId) {
         // Colorado Map Dimensions: 960x1200 (width x height)
         // Use this to scale the map up/down depending on
         // size of map container.
-        map.height = el.clientHeight;
-        map.width = (800 / 1200) * map.height;
+        map.width = el.clientWidth;
+        map.height = (800 / 1200) * map.width;
+
+        // map.height = el.clientHeight;
+        // map.width = (800 / 1200) * map.height;
         console.log('Making map size: ' + map.width + 'x' + map.height);
 
         map.projection = d3.geo.conicConformal();

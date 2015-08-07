@@ -5,14 +5,54 @@
     %script{:charset => "utf-8", :src => "js/topojson.v1.js"}
     %script{:charset => "utf-8", :src => "js/moment.js"}
     %meta{:charset => "utf-8"}/
-    %link{:href => "http://fonts.googleapis.com/css?family=Lato", :rel => "stylesheet", :type => "text/css"}/
+    
+
+    / ** BOOTSTRAP **/ 
+    / Latest compiled and minified CSS
+    %link{:href => "css/bootstrap/bootstrap.min.css", :rel => "stylesheet"}/
+    / Optional theme
+    %link{:href => "css/bootstrap/bootstrap-theme.min.css", :rel => "stylesheet"}/
+    / Latest compiled and minified JavaScript
+    %script{:src => "js/bootstrap/bootstrap.min.js"}
+
+    / ** MYSTYLE 
+
     %link{:href => "css/style.css", :rel => "stylesheet", :type => "text/css"}/
+
+
   %body
-    %h1 CDE Map 
-    #name.countyname Countya
-    %button#all.btn.btn-default.pull-right Show Boces And Districts
-    %button#BOCES.btn.btn-default.pull-right Show Boces
-    %button#districts.btn.btn-default.pull-right Show Districts
-    #map.fullscreen-map
-  / Must include after document loads.
+    .main-component
+      %nav.navbar.navbar-default
+        .container-fluid
+          .navbar-header
+            .logo-container
+              %a.logo.navbar-brand{:href => "#"}
+                %img{:alt => "Brand", :src => "https://www.cde.state.co.us/sites/default/files/pics/cdecomm/co_cde_shield_300_rgb-125x240.png"}
+              %span.customerName Colorado Department of Education
+          / #bs-example-navbar-collapse-2.collapse.navbar-collapse
+          /   %form.navbar-form.navbar-left{:role => "search"}
+          /     / %button#BOCES.btn.btn-default
+          /     /   = "Show Boces"
+          /     / %button#districts.btn.btn-default
+          /     /   = "Show Districts"
+          /     .form-group
+          /       %input.form-control{:placeholder => "Search Districts", :type => "text"}/
+          /     %button.btn.btn-default 
+          /       = "Submit" 
+      .btn-group{"aria-label" => "...", :role => "group"}
+        %button.btn.btn-default#BOCES BOCES
+        %button.btn.btn-default#districts Districts
+
+      .panels.row
+        .left-panel.col-md-6
+          .row
+            #name.countyname s
+          .row
+            #map.fullscreen-map
+
+        .right-panel.col-md-6
+          %img{:src => "assets/filler-charts.png",  :height => "auto", :width => "auto" }/
+
+
+
   %script{:src => "js/viz.js"}

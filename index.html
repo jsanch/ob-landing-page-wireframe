@@ -5,17 +5,58 @@
     <script charset='utf-8' src='js/topojson.v1.js'></script>
     <script charset='utf-8' src='js/moment.js'></script>
     <meta charset='utf-8'>
-    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <!-- ** BOOTSTRAP **/ -->
+    <!-- Latest compiled and minified CSS -->
+    <link href='css/bootstrap/bootstrap.min.css' rel='stylesheet'>
+    <!-- Optional theme -->
+    <link href='css/bootstrap/bootstrap-theme.min.css' rel='stylesheet'>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src='js/bootstrap/bootstrap.min.js'></script>
+    <!-- ** MYSTYLE -->
     <link href='css/style.css' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <h1>CDE Map</h1>
-    <div class='countyname' id='name'>Countya</div>
-    <button class='btn btn-default pull-right' id='all'>Show Boces And Districts</button>
-    <button class='btn btn-default pull-right' id='BOCES'>Show Boces</button>
-    <button class='btn btn-default pull-right' id='districts'>Show Districts</button>
-    <div class='fullscreen-map' id='map'></div>
+    <div class='main-component'>
+      <nav class='navbar navbar-default'>
+        <div class='container-fluid'>
+          <div class='navbar-header'>
+            <div class='logo-container'>
+              <a class='logo navbar-brand' href='#'>
+                <img alt='Brand' src='https://www.cde.state.co.us/sites/default/files/pics/cdecomm/co_cde_shield_300_rgb-125x240.png'>
+              </a>
+              <span class='customerName'>Colorado Department of Education</span>
+            </div>
+          </div>
+          <!-- #bs-example-navbar-collapse-2.collapse.navbar-collapse -->
+          <!-- %form.navbar-form.navbar-left{:role => "search"} -->
+          <!-- / %button#BOCES.btn.btn-default -->
+          <!-- /   = "Show Boces" -->
+          <!-- / %button#districts.btn.btn-default -->
+          <!-- /   = "Show Districts" -->
+          <!-- .form-group -->
+          <!-- %input.form-control{:placeholder => "Search Districts", :type => "text"}/ -->
+          <!-- %button.btn.btn-default -->
+          <!-- = "Submit" -->
+        </div>
+      </nav>
+      <div aria-label='...' class='btn-group' role='group'>
+        <button class='btn btn-default' id='BOCES'>BOCES</button>
+        <button class='btn btn-default' id='districts'>Districts</button>
+      </div>
+      <div class='panels row'>
+        <div class='left-panel col-md-6'>
+          <div class='row'>
+            <div class='countyname' id='name'>s</div>
+          </div>
+          <div class='row'>
+            <div class='fullscreen-map' id='map'></div>
+          </div>
+        </div>
+        <div class='right-panel col-md-6'>
+          <img height='auto' src='assets/filler-charts.png' width='auto'>
+        </div>
+      </div>
+    </div>
   </body>
-  <!-- Must include after document loads. -->
   <script src='js/viz.js'></script>
 </html>
