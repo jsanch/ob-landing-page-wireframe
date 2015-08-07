@@ -16,7 +16,7 @@ function ColoradoMap(elementId) {
         // Use this to scale the map up/down depending on
         // size of map container.
         map.width = el.clientWidth;
-        map.height = (800 / 1200) * map.width;
+        map.height = (700 / 1200) * map.width;
 
         // map.height = el.clientHeight;
         // map.width = (800 / 1200) * map.height;
@@ -38,14 +38,14 @@ function ColoradoMap(elementId) {
             map.getDistricts().then(function() {
                 map.getBOCESPoints().then(function(){
                     map.centerMapProjection();
-                    map.drawBOCES();
-                    map.animateBOCES();
+                    map.drawDistricts();
+                    map.animateDistricts();
+                    ma
                 });
             });
         });
 
         $('#all').click(function() {
-            
             map.clear();
             map.drawALL();
         });
@@ -130,7 +130,7 @@ function ColoradoMap(elementId) {
               .attr("r", "10px")
               .attr('class','BOCES')
               .on('mouseover',function(d) {
-                $('#name').text("BOCES: " + d.properties['Name']);
+                $('#mapRegionName').text("BOCES: " + d.properties['Name']);
               })
               .on('click', map.BOCES_OnClick)
         
@@ -201,7 +201,7 @@ function ColoradoMap(elementId) {
                 'd': map.path
             })
             .on('mouseover', function(d) {
-              $('#name').text("School District: " + d.properties['NAME']);
+              $('#mapRegionName').text("School District: " + d.properties['NAME']);
             })
             .on('click', map.district_OnClick)
     };
@@ -285,7 +285,8 @@ function ColoradoMap(elementId) {
       $('#80731').click();
     }
     this.district_OnClick = function(d) {
-      console.log("Schools: " + d.properties.schools);
+      // console.log("Schools: " + d.properties.schools);
+      $('#myModal').modal('toggle');
     }
 
 }; // ColoradoMap

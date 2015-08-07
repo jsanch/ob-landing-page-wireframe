@@ -13,6 +13,7 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src='js/bootstrap/bootstrap.min.js'></script>
     <!-- ** MYSTYLE -->
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href='css/style.css' rel='stylesheet' type='text/css'>
   </head>
   <body>
@@ -27,33 +28,55 @@
               <span class='customerName'>Colorado Department of Education</span>
             </div>
           </div>
-          <!-- #bs-example-navbar-collapse-2.collapse.navbar-collapse -->
-          <!-- %form.navbar-form.navbar-left{:role => "search"} -->
-          <!-- / %button#BOCES.btn.btn-default -->
-          <!-- /   = "Show Boces" -->
-          <!-- / %button#districts.btn.btn-default -->
-          <!-- /   = "Show Districts" -->
-          <!-- .form-group -->
-          <!-- %input.form-control{:placeholder => "Search Districts", :type => "text"}/ -->
-          <!-- %button.btn.btn-default -->
-          <!-- = "Submit" -->
         </div>
       </nav>
-      <div aria-label='...' class='btn-group' role='group'>
-        <button class='btn btn-default' id='BOCES'>BOCES</button>
-        <button class='btn btn-default' id='districts'>Districts</button>
-      </div>
-      <div class='panels row'>
-        <div class='left-panel col-md-6'>
-          <div class='row'>
-            <div class='countyname' id='name'>s</div>
+      <div class='panels container-fluid'>
+        <div class='left-panel col-md-8'>
+          <div class='mapLayerButtons'>
+            <div aria-label='...' class='btn-group' role='group'>
+              <button class='btn btn-default' id='BOCES'>BOCES</button>
+              <button class='btn btn-default' id='districts'>Districts</button>
+            </div>
           </div>
-          <div class='row'>
-            <div class='fullscreen-map' id='map'></div>
+          <div class='map-container'>
+            <div id='map'></div>
+            <div class='lookup-panel'>
+              <div class='well well-sm'>
+                <div class='regionName'>
+                  <div class='hovertooltip' id='mapRegionName'></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class='right-panel col-md-6'>
-          <img height='auto' src='assets/filler-charts.png' width='auto'>
+        <div class='right-panel col-sm-4'>
+          <h4>School</h4>
+          <p class='row general-info'>
+            In 2010, legislation was enacted requiring each local education agency to post on-line, for free public access, Local Education. Agencies' (LEAs') annual budgets, annual financial statements, salary schedules or policies, accounts payable check registers and credit, debit, and purchase card statements
+          </p>
+        </div>
+      </div>
+      <div class='bottom row'>
+        <!-- %img{:src => "assets/filler-charts.png",  :height => "auto", :width => "auto" }/ -->
+        <!-- Modal -->
+        <div aria-labelledby='myModalLabel' class='modal fade' id='myModal' role='dialog' tabindex='-1'>
+          <div class='modal-dialog' role='document'>
+            <div class='modal-content'>
+              <div class='modal-header'>
+                <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
+                  <span aria-hidden='true'>&#215;</span>
+                </button>
+                <h4 class='modal-title' id='myModalLabel'>Modal title</h4>
+              </div>
+              <div class='modal-body'>
+                ...
+              </div>
+              <div class='modal-footer'>
+                <button class='btn btn-default' data-dismiss='modal' type='button'>Close</button>
+                <button class='btn btn-primary' type='button'>Save changes</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

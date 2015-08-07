@@ -4,10 +4,12 @@
  *
  */
 
-html {
-    font-family: Lato;
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lato';
 }
-
+p, div {
+    font-family: 'Lato';
+}
 
 /*    
  *
@@ -25,17 +27,7 @@ html {
     height: 28px;}
 
 
-.customerName {
-    -webkit-font-smoothing: antialiased;
-    box-sizing: border-b    ox;
-    color: rgb(0, 0, 0);
-    cursor: auto;
-    display: inline;
-    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-    font-size: 18px;
-    font-weight: normal;
-    height: auto;
-    line-height: 60px; }
+
 
 /*    
  *
@@ -44,6 +36,19 @@ html {
  */
 
 
+.mapLayerButtons {
+    text-align: center; }
+
+.customerName {
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-b    ox;
+    color: rgb(0, 0, 0);
+    cursor: auto;
+    display: inline;
+    font-size: 18px;
+    font-weight: normal;
+    height: auto;
+    line-height: 60px; }
 
 
 
@@ -53,11 +58,6 @@ html {
  *
  */
 
-.fullscreen-map {
-    height: 100%;
-    width: 100%;
-    margin: auto;
-}
 .district {
     cursor: pointer;
     fill: #66696c;
