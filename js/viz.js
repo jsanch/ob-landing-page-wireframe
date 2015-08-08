@@ -4,6 +4,7 @@ function ColoradoMap(elementId) {
 
     this.divId = elementId;
     this.divSelector = '#' + elementId;
+    this.tooltip = ''
 
     this.initMap = function() {
 
@@ -57,6 +58,8 @@ function ColoradoMap(elementId) {
             map.drawDistricts();
             map.animateDistricts();
         });
+
+        map.initTooltip(); 
     }; // initMap
 
     this.clear = function() {
@@ -250,10 +253,16 @@ function ColoradoMap(elementId) {
                 });
            });
       }
-    }
+    };
 
     // MOUSE EVENTS 
     
+    this.initTooltip = function () {
+      map.tooltip = d3.select("body").append("div")   
+      .attr("class", "tooltip")               
+      .style("opacity", 0);
+    }
+
     this.BOCES_OnClick = function(d) {
       $('#region-title-clikc').text("BOCES: "+d.properties['Name']);
       $('#showmepanel').toggle();
@@ -269,25 +278,34 @@ function ColoradoMap(elementId) {
     this.district_OnClick = function(d,i) {
       $('#region-title-click').text("School District: "+d.properties['NAME']);
       $('#showmepanel').show();
-      
       d3.select(".selected-region").classed("selected-region", false);
-      d3.select(this).classed("selected-region",true);
-      
-      // d3.select(this).style("fill", "green");
-
+      d3.select(this).classed("selected-region",true);      
     }
 
     this.district_Mouseover = function(d) {
 
-      $('#region-title').text("School District: "+d.properties['NAME']);
+      // $('#region-title').text("School District: "+d.properties['NAME']);
 
-      d3.select(".hovered-region").classed("hovered-region", false);
-      d3.select(this).classed("hovered-region",true);
 
-      // d3.select(this).style("fill", "green");
+      map.tooltip
+            .transition()
+            .duration(200)
+            .style("opacity",.9);
+      map.tooltip
+          .html (d.properties['NAME'])
+          .style("left", (d3.event.pageX + 28) + "px")
+          .style("top", (d3.event.pageY - 28 ) + "px");
+
+      // d3.select(".hovered-region").classed("hovered-region", false);
+      // d3.select(this).classed("hovered-region",true);
+
+
     }
     this.district_Mouseout= function(d) {
-      // $('#showmepanel').hide();
+      map.tooltip.transition()        
+            .duration(500)      
+            .style("opacity", 0);   
+
     }
 
 
