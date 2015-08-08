@@ -11,7 +11,6 @@ function ColoradoMap(elementId) {
         var map = this;
         var el = document.getElementById(map.divId);
 
-        console.log(el.clientHeight);
         // Colorado Map Dimensions: 960x1200 (width x height)
         // Use this to scale the map up/down depending on
         // size of map container.
@@ -58,8 +57,6 @@ function ColoradoMap(elementId) {
             map.drawDistricts();
             map.animateDistricts();
         });
-
-
     }; // initMap
 
     this.clear = function() {
@@ -128,12 +125,10 @@ function ColoradoMap(elementId) {
                 return -8 + map.projection([d.properties['LONGITUDE'],d.properties['LATITUDE'] ])[1]; })
               .attr("r", "10px")
               .attr('class','BOCES')
-              .on('mouseover',function(d) {
-                $('#mapRegionName').text("BOCES: " + d.properties['Name']);
-              })
+              .on('mouseover',map.BOCES_Mouseover)
               .on('click', map.BOCES_OnClick)
         
-        var text = map.layer2.selectAll("text")
+        var labeles = map.layer2.selectAll("text")
               .data(map.BOCESPoints.features)
               .enter()
               .append("text")
@@ -145,27 +140,6 @@ function ColoradoMap(elementId) {
               .attr("class", "BOCES-name")
 
       map.arrangeLabels();
-   
-
-    //    var modals = d3.select('body').selectAll("div")
-    //           .data(map.BOCESPoints.features)
-    //           .enter()
-    //           .append("div")
-    //           .attr("id", function (d) { return d.properties['Zip'];})
-    //           .attr("class", "modal")
-    //           .append("p").text("RANDOm");
-
-    // var modals_activators = d3.select('body').selectAll("a")
-    //           .data(map.BOCESPoints.features)
-    //           .enter()
-    //           .append("a")
-    //           .attr("id", "go")
-    //           .attr("rel", "leanModal")
-    //           .attr("name", "test")
-    //           .attr("href", function (d) { return "#" + d.properties['Zip']; })
-    //           .text("a");
-
-
     };
 
     this.animateBOCES = function() {
@@ -199,10 +173,9 @@ function ColoradoMap(elementId) {
                 'stroke-width': 1,
                 'd': map.path
             })
-            .on('mouseover', function(d) {
-              $('#mapRegionName').text("School District: " + d.properties['NAME']);
-            })
+            .on('mouseover', map.district_Mouseover)
             .on('click', map.district_OnClick)
+            .on('mouseout', map.district_Mouseout)
     };
 
     this.animateDistricts = function() {
@@ -230,7 +203,7 @@ function ColoradoMap(elementId) {
         // If you want to know more about how this works, check out the
         // css-tricks article at http://css-tricks.com/svg-line-animation-works
         // and then look at http://jakearchibald.com/2013/animated-line-drawing-svg/
-        var speed = 2.5; // seconds
+        var speed = 3.5; // seconds
         var path = document.querySelector(selector);
         var length = path.getTotalLength();
 
@@ -279,21 +252,44 @@ function ColoradoMap(elementId) {
       }
     }
 
+    // MOUSE EVENTS 
+    
     this.BOCES_OnClick = function(d) {
-      $('#myModal .modal-title').text(d.properties['Name']);
+      $('#region-title-clikc').text("BOCES: "+d.properties['Name']);
+      $('#showmepanel').toggle();
 
-      $('#modal-content').text('link to financial transparency app....');
-
-      $('#myModal').modal('toggle');
     }
-    this.district_OnClick = function(d) {
 
-      $('#myModal .modal-title').text(d.properties['NAME']);
+    this.BOCES_Mouseover = function(d) {
+      $('#region-title').text("BOCES: "+d.properties['Name']);
+      $('#showmepanel').toggle();
 
-      $('#modal-content').text('link to financial transparency app....');
-
-      $('#myModal').modal('toggle');
     }
+
+    this.district_OnClick = function(d,i) {
+      $('#region-title-click').text("School District: "+d.properties['NAME']);
+      $('#showmepanel').show();
+      
+      d3.select(".selected-region").classed("selected-region", false);
+      d3.select(this).classed("selected-region",true);
+      
+      // d3.select(this).style("fill", "green");
+
+    }
+
+    this.district_Mouseover = function(d) {
+
+      $('#region-title').text("School District: "+d.properties['NAME']);
+
+      d3.select(".hovered-region").classed("hovered-region", false);
+      d3.select(this).classed("hovered-region",true);
+
+      // d3.select(this).style("fill", "green");
+    }
+    this.district_Mouseout= function(d) {
+      // $('#showmepanel').hide();
+    }
+
 
 }; // ColoradoMap
 

@@ -6,6 +6,11 @@
     %script{:charset => "utf-8", :src => "js/moment.js"}
     %meta{:charset => "utf-8"}/
     
+    %title CDE | Transparency Map
+
+    / Favicon
+    %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans", :rel => "stylesheet", :type => "text/css"}/
+
 
     / ** BOOTSTRAP **/ 
     / Latest compiled and minified CSS
@@ -32,24 +37,42 @@
 
       
       .panels.container-fluid
-        .left-panel.col-md-8
-          
-          .mapLayerButtons
-            .btn-group{"aria-label" => "...", :role => "group"}
-              %button.btn.btn-default#BOCES BOCES
-              %button.btn.btn-default#districts Districts
-          .map-container
-            #map
-            .lookup-panel
-              .well.well-sm
-                Debug:
-                .regionName
-                  #mapRegionName.hovertooltip 
+        .left-panel.col-md-7  
+          .box-panel     
+            .mapLayerButtons
+              .btn-group{"aria-label" => "...", :role => "group"}
+                %button.btn.btn-default#BOCES BOCES
+                %button.btn.btn-default#districts Districts
+            .map-container
+              #map
+          /     / REMOVE. FOR DEBUG ONLY
+          / .debug-window.well.well-sm
+          /   #debug-message
+          /     Debug: 
 
-        .right-panel.col-sm-4
-          %h4 School Districts
-          %p.row.general-info
-            Colrado Lorem Ipsum, legislation was enacted requiring each local education agency to post on-line, for free public access, Local Education. Agencies' (LEAs') annual budgets, annual financial statements, salary schedules or policies, accounts payable check registers and credit, debit, and purchase card statements Lorem Ipsum
+        .right-panel.col-sm-5
+          .box-panel
+            .panel-header
+              #DBDBDBSchool Districts
+            .panel-body
+              %p Colrado Lorem Ipsum, legislation was enacted requiring each local education agency to post on-line, for free public access, Local Education. Agencies' (LEAs') annual budgets, annual financial statements, salary schedules or policies, accounts payable check registers and credit, debit, and purchase card statements Lorem Ipsum
+          / .box-panel
+          /   .panel-header
+          /     #region-title Region Title
+          /   .panel-body
+          /     #region-info
+          /       The Region has this and that and this and that.
+          /     #region-link
+          /       %a Transparency Portal Link
+          .box-panel#showmepanel
+            .panel-header
+              #region-title-click Region Title
+            .panel-body
+              #region-info-click
+                The Region has this and that and this and that.
+              #region-link-click
+                %a Transparency Portal Link
+
 
 
 

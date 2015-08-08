@@ -5,10 +5,10 @@
  */
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Lato';
+    font-family: 'Open Sans';
 }
 p, div {
-    font-family: 'Lato';
+    font-family: 'Open Sans';
 }
 
 /*    
@@ -24,8 +24,14 @@ p, div {
     line-height: 6rem;
     margin-left: 15px;}
 .logo img {
-    height: 28px;}
-
+    height: 28px;
+}
+/* navbar */
+.navbar-default {
+    background-color: white;
+    border-color: #E7E7E7;
+    background-image: none;
+}
 
 
 
@@ -35,26 +41,52 @@ p, div {
  *
  */
 
+/* GENERAl Stuff */ 
+.box-panel { 
+    width: 100%;
+    height: auto;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 1) inset, 0px 1px 5px rgba(0, 0, 0, 0.275);
 
+    /*padding-top: 10px;*/
+    /*padding-bottom: 10px;*/
+    margin-bottom: 10px;
+}
+
+.panel-header , .panel-body {
+    padding-left: 10px;
+}
+.panel-header {
+    padding-top: 5px;
+    border-bottom-width: thin;
+    border-bottom-style: solid;
+    border-bottom-color: #DADADA;
+}
+.panel-body {
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+/* Show me panel */ 
+
+#showmepanel {
+ display: none;
+ background-color: #DDFAE7;
+}
+
+
+/* MAP PANEL */
 .mapLayerButtons {
+    padding-top: 1%;
     text-align: center; }
 
-.customerName {
-    -webkit-font-smoothing: antialiased;
-    box-sizing: border-b    ox;
-    color: rgb(0, 0, 0);
-    cursor: auto;
-    display: inline;
-    font-size: 18px;
-    font-weight: normal;
-    height: auto;
-    line-height: 60px; }
-
-.lookup-panel {
-    height: 50%;
-    width: 50%;
-    text-align: center;
+.map-container {
+    padding-bottom: 10px;
+    width: 120%;
+    margin-left: -10%;
 }
+
 
 /*    
  *
@@ -74,7 +106,7 @@ p, div {
     stroke-width: 0.5px;}
 .district:hover {
     fill: green;
-    fill-opacity: 0.45;}
+    fill-opacity: 0.25;}
 .RSA {
     /*cursor: pointer;*/
     fill: #66696c;
@@ -98,7 +130,7 @@ p, div {
 }
 .BOCES-name { /* LABELS next to BOCES points */ 
   color: black;
-  font-size: 8px;
+  font-size: 11px;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -106,4 +138,16 @@ p, div {
     -ms-user-select: none;
     user-select: none;
 }
+/*.hover-region{
+    fill: red;
+    fill-opacity: 0.45;
 
+}*/
+.selected-region{
+    fill: green;
+    fill-opacity: 0.85;
+}
+.selected-region:hover{
+    fill: green;
+    fill-opacity: 0.85;
+}
