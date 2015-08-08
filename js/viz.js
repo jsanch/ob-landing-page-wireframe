@@ -131,18 +131,18 @@ function ColoradoMap(elementId) {
               .on('mouseover',map.BOCES_Mouseover)
               .on('click', map.BOCES_OnClick)
         
-        var labeles = map.layer2.selectAll("text")
-              .data(map.BOCESPoints.features)
-              .enter()
-              .append("text")
-              .attr("x", function(d) {
-                return map.projection([d.properties['LONGITUDE'],d.properties['LATITUDE'] ])[0]; })
-              .attr("y", function (d) {
-                return map.projection([d.properties['LONGITUDE'],d.properties['LATITUDE'] ])[1]; })
-              .text( function(d) { return d.properties['Name']; })
-              .attr("class", "BOCES-name")
+      //   var labeles = map.layer2.selectAll("text")
+      //         .data(map.BOCESPoints.features)
+      //         .enter()
+      //         .append("text")
+      //         .attr("x", function(d) {
+      //           return map.projection([d.properties['LONGITUDE'],d.properties['LATITUDE'] ])[0]; })
+      //         .attr("y", function (d) {
+      //           return map.projection([d.properties['LONGITUDE'],d.properties['LATITUDE'] ])[1]; })
+      //         .text( function(d) { return d.properties['Name']; })
+      //         .attr("class", "BOCES-name")
 
-      map.arrangeLabels();
+      // map.arrangeLabels();
     };
 
     this.animateBOCES = function() {
@@ -263,16 +263,29 @@ function ColoradoMap(elementId) {
       .style("opacity", 0);
     }
 
-    this.BOCES_OnClick = function(d) {
-      $('#region-title-clikc').text("BOCES: "+d.properties['Name']);
-      $('#showmepanel').toggle();
 
+    this.BOCES_OnClick = function(d,i) {
+      $('#region-title-click').text("BOCES: "+d.properties['Name']);
+      $('#showmepanel').show();
+      d3.select(".selected-region").classed("selected-region", false);
+      d3.select(this).classed("selected-region",true);      
     }
 
     this.BOCES_Mouseover = function(d) {
-      $('#region-title').text("BOCES: "+d.properties['Name']);
-      $('#showmepanel').toggle();
+      map.tooltip
+            .transition()
+            .duration(200)
+            .style("opacity",.9);
+      map.tooltip
+          .html (d.properties['Name'])
+          .style("left", (d3.event.pageX + 28) + "px")
+          .style("top", (d3.event.pageY - 28 ) + "px");
 
+    }
+    this.BOCES_Mouseout= function(d) {
+      map.tooltip.transition()        
+            .duration(500)      
+            .style("opacity", 0);   
     }
 
     this.district_OnClick = function(d,i) {
@@ -283,10 +296,6 @@ function ColoradoMap(elementId) {
     }
 
     this.district_Mouseover = function(d) {
-
-      // $('#region-title').text("School District: "+d.properties['NAME']);
-
-
       map.tooltip
             .transition()
             .duration(200)
@@ -296,16 +305,11 @@ function ColoradoMap(elementId) {
           .style("left", (d3.event.pageX + 28) + "px")
           .style("top", (d3.event.pageY - 28 ) + "px");
 
-      // d3.select(".hovered-region").classed("hovered-region", false);
-      // d3.select(this).classed("hovered-region",true);
-
-
     }
     this.district_Mouseout= function(d) {
       map.tooltip.transition()        
             .duration(500)      
             .style("opacity", 0);   
-
     }
 
 
