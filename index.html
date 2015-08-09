@@ -18,6 +18,7 @@
     <!-- ** MYSTYLE -->
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href='css/style.css' rel='stylesheet' type='text/css'>
+    <link href='css/checkbox.css' rel='stylesheet' type='text/css'>
   </head>
   <body>
     <div class='main-component'>
@@ -33,76 +34,70 @@
           </div>
         </div>
       </nav>
-      <div class='panels container-fluid'>
-        <div class='left-panel col-md-7'>
-          <div class='box-panel'>
-            <div class='mapLayerButtons'>
-              <div aria-label='...' class='btn-group' role='group'>
-                <button class='btn btn-default' id='BOCES'>BOCES</button>
-                <button class='btn btn-default' id='districts'>Districts</button>
-              </div>
-            </div>
-            <div class='map-container'>
-              <div id='map'></div>
-            </div>
-          </div>
-          <!-- / REMOVE. FOR DEBUG ONLY -->
-          <!-- .debug-window.well.well-sm -->
-          <!-- #debug-message -->
-          <!-- Debug: -->
-        </div>
-        <div class='right-panel col-sm-5'>
-          <div class='box-panel'>
-            <div class='panel-header'>
-              <div id='DBDBDBSchool'>Districts</div>
-            </div>
-            <div class='panel-body'>
-              <p>Colrado Lorem Ipsum, legislation was enacted requiring each local education agency to post on-line, for free public access, Local Education. Agencies' (LEAs') annual budgets, annual financial statements, salary schedules or policies, accounts payable check registers and credit, debit, and purchase card statements Lorem Ipsum</p>
-            </div>
-          </div>
-          <!-- .box-panel -->
-          <!-- .panel-header -->
-          <!-- #region-title Region Title -->
-          <!-- .panel-body -->
-          <!-- #region-info -->
-          <!-- The Region has this and that and this and that. -->
-          <!-- #region-link -->
-          <!-- %a Transparency Portal Link -->
-          <div class='box-panel' id='showmepanel'>
-            <div class='panel-header'>
-              <div id='region-title-click'>Region Title</div>
-            </div>
-            <div class='panel-body'>
-              <div id='region-info-click'>
-                The Region has this and that and this and that.
-              </div>
-              <div id='region-link-click'>
-                <a>Transparency Portal Link</a>
-              </div>
-            </div>
+      <div class='container-fluid'>
+        <div class='row'>
+          <div class='sub-navbar'>
+            <ul class='nav nav-pills'>
+              <li id='BOCES' role='presentation'>
+                <a href='#'>BOCES</a>
+              </li>
+              <li class='active' id='districts' role='presentation'>
+                <a href='#'>Districts</a>
+              </li>
+              <li id='schools' role='presentation'>
+                <a href='#'>Schools</a>
+              </li>
+            </ul>
           </div>
         </div>
-      </div>
-      <div class='bottom row'>
-        <!-- %img{:src => "assets/filler-charts.png",  :height => "auto", :width => "auto" }/ -->
-        <!-- Modal -->
-        <div aria-labelledby='myModalLabel' class='modal fade' id='myModal' role='dialog' tabindex='-1'>
-          <div class='modal-dialog' role='document'>
-            <div class='modal-content'>
-              <div class='modal-header'>
-                <button aria-label='Close' class='close' data-dismiss='modal' type='button'>
-                  <span aria-hidden='true'>&#215;</span>
-                </button>
-                <h4 class='modal-title' id='myModalLabel'>Modal title</h4>
-              </div>
-              <div class='modal-body'>
-                <div id='modal-content'>
-                  Hell
+        <div class='row'>
+          <div class='panels container-fluid nopadding'>
+            <div class='left-panel col-sm-2'>
+              <div class='smooth-panel'>
+                <div class='panel-header'>
+                  <div id='ListName'>List of Districts</div>
+                </div>
+                <div class='panel-body panel-scroll'>
+                  <ul id='regionlist'></ul>
                 </div>
               </div>
-              <!-- .modal-footer -->
-              <!-- %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close -->
-              <!-- %button.btn.btn-primary{:type => "button"} Save changes -->
+            </div>
+            <div class='middle-panel col-md-5 nopadding'>
+              <div class='map-container'>
+                <div id='map'></div>
+              </div>
+            </div>
+            <div class='right-panel col-sm-5'>
+              <div class='box-panel'>
+                <div class='panel-header'>
+                  <div id='RegionName'>Districts</div>
+                </div>
+                <div class='panel-body'>
+                  <p>Colrado Lorem Ipsum, legislation was enacted requiring each local education agency to post on-line, for free public access, Local Education. Agencies' (LEAs') annual budgets, annual financial statements, salary schedules or policies, accounts payable check registers and credit, debit, and purchase card statements Lorem Ipsum</p>
+                </div>
+              </div>
+              <!-- .box-panel -->
+              <!-- .panel-header -->
+              <!-- #region-title Region Title -->
+              <!-- .panel-body -->
+              <!-- #region-info -->
+              <!-- The Region has this and that and this and that. -->
+              <!-- #region-link -->
+              <!-- %a Transparency Portal Link -->
+              <div class='box-panel' id='showme-region'>
+                <div class='panel-header'>
+                  <div id='region-title-click'>Region Title</div>
+                </div>
+                <div class='panel-body'>
+                  <div id='region-info-click'>
+                    The Region has this and that and this and that.
+                  </div>
+                  <div id='region-link-click'>
+                    <a>Transparency Portal Link</a>
+                  </div>
+                </div>
+              </div>
+              <!-- .box-panel#showme-schools -->
             </div>
           </div>
         </div>

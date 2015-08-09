@@ -23,6 +23,7 @@
     / ** MYSTYLE 
     %link{:href => "http://fonts.googleapis.com/css?family=Lato", :rel => "stylesheet", :type => "text/css"}
     %link{:href => "css/style.css", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "css/checkbox.css", :rel => "stylesheet", :type => "text/css"}/
 
 
   %body
@@ -34,66 +35,51 @@
               %a.logo.navbar-brand{:href => "#"}
                 %img{:alt => "Brand", :src => "https://www.cde.state.co.us/sites/default/files/pics/cdecomm/co_cde_shield_300_rgb-125x240.png"}
               %span.customerName Colorado Department of Education
+      .container-fluid
+        .row
+          .sub-navbar
+            %ul.nav.nav-pills
+              %li#BOCES{:role => "presentation"}
+                %a{:href => "#"} BOCES
+              %li#districts.active{:role => "presentation"}
+                %a{:href => "#"} Districts
+              %li#schools{:role => "presentation"}
+                %a{:href => "#"} Schools
+        .row
+          .panels.container-fluid.nopadding
+            .left-panel.col-sm-2
+              .smooth-panel
+                .panel-header 
+                  #ListName List of Districts
+                .panel-body.panel-scroll
+                  %ul#regionlist
 
-      
-      .panels.container-fluid
-        .left-panel.col-md-7  
-          .box-panel     
-            .mapLayerButtons
-              .btn-group{"aria-label" => "...", :role => "group"}
-                %button.btn.btn-default#BOCES BOCES
-                %button.btn.btn-default#districts Districts
-            .map-container
-              #map
-          /     / REMOVE. FOR DEBUG ONLY
-          / .debug-window.well.well-sm
-          /   #debug-message
-          /     Debug: 
-
-        .right-panel.col-sm-5
-          .box-panel
-            .panel-header
-              #DBDBDBSchool Districts
-            .panel-body
-              %p Colrado Lorem Ipsum, legislation was enacted requiring each local education agency to post on-line, for free public access, Local Education. Agencies' (LEAs') annual budgets, annual financial statements, salary schedules or policies, accounts payable check registers and credit, debit, and purchase card statements Lorem Ipsum
-          / .box-panel
-          /   .panel-header
-          /     #region-title Region Title
-          /   .panel-body
-          /     #region-info
-          /       The Region has this and that and this and that.
-          /     #region-link
-          /       %a Transparency Portal Link
-          .box-panel#showmepanel
-            .panel-header
-              #region-title-click Region Title
-            .panel-body
-              #region-info-click
-                The Region has this and that and this and that.
-              #region-link-click
-                %a Transparency Portal Link
-
-
-
-
-      .bottom.row
-        / %img{:src => "assets/filler-charts.png",  :height => "auto", :width => "auto" }/
-
-
-        / Modal
-        #myModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-          .modal-dialog{:role => "document"}
-            .modal-content
-              .modal-header
-                %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-                  %span{"aria-hidden" => "true"} &#215;
-                %h4#myModalLabel.modal-title Modal title
-              .modal-body
-                #modal-content
-                  ="Hell"
-              / .modal-footer
-              /   %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
-              /   %button.btn.btn-primary{:type => "button"} Save changes
+            .middle-panel.col-md-5.nopadding
+              .map-container
+                #map
+            .right-panel.col-sm-5
+              .box-panel
+                .panel-header
+                  #RegionName Districts
+                .panel-body
+                  %p Colrado Lorem Ipsum, legislation was enacted requiring each local education agency to post on-line, for free public access, Local Education. Agencies' (LEAs') annual budgets, annual financial statements, salary schedules or policies, accounts payable check registers and credit, debit, and purchase card statements Lorem Ipsum
+              / .box-panel
+              /   .panel-header
+              /     #region-title Region Title
+              /   .panel-body
+              /     #region-info
+              /       The Region has this and that and this and that.
+              /     #region-link
+              /       %a Transparency Portal Link
+              .box-panel#showme-region
+                .panel-header
+                  #region-title-click Region Title
+                .panel-body
+                  #region-info-click
+                    The Region has this and that and this and that.
+                  #region-link-click
+                    %a Transparency Portal Link
+              / .box-panel#showme-schools
 
 
 

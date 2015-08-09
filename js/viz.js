@@ -40,6 +40,7 @@ function ColoradoMap(elementId) {
                     map.centerMapProjection();
                     map.drawDistricts();
                     map.animateDistricts();
+                    map.addDistrictList(); 
                 });
             });
         });
@@ -52,14 +53,29 @@ function ColoradoMap(elementId) {
             map.clear();
             map.drawBOCES();
             map.animateBOCES();
+
+            d3.select(".active").classed("active", false);
+            d3.select(this).classed("active",true);
+
+            d3.select("#ListName").text("List Of BOCES");
+            d3.select("#RegionName").text("BOCES");
+
+
         });
         $('#districts').click(function() {
             map.clear();
             map.drawDistricts();
             map.animateDistricts();
+            d3.select(".active").classed("active", false);
+            d3.select(this).classed("active",true);
+
+            d3.select("#ListName").text("Districts");
+            d3.select("#RegionName").text("BOCES");
+
         });
 
         map.initTooltip(); 
+
     }; // initMap
 
     this.clear = function() {
@@ -129,20 +145,19 @@ function ColoradoMap(elementId) {
               .attr("r", "10px")
               .attr('class','BOCES')
               .on('mouseover',map.BOCES_Mouseover)
-              .on('click', map.BOCES_OnClick)
-        
-      //   var labeles = map.layer2.selectAll("text")
-      //         .data(map.BOCESPoints.features)
-      //         .enter()
-      //         .append("text")
-      //         .attr("x", function(d) {
-      //           return map.projection([d.properties['LONGITUDE'],d.properties['LATITUDE'] ])[0]; })
-      //         .attr("y", function (d) {
-      //           return map.projection([d.properties['LONGITUDE'],d.properties['LATITUDE'] ])[1]; })
-      //         .text( function(d) { return d.properties['Name']; })
-      //         .attr("class", "BOCES-name")
+              .on('click', map.BOCES_OnClick)    
+          //   var labeles = map.layer2.selectAll("text")
+          //         .data(map.BOCESPoints.features)
+          //         .enter()
+          //         .append("text")
+          //         .attr("x", function(d) {
+          //           return map.projection([d.properties['LONGITUDE'],d.properties['LATITUDE'] ])[0]; })
+          //         .attr("y", function (d) {
+          //           return map.projection([d.properties['LONGITUDE'],d.properties['LATITUDE'] ])[1]; })
+          //         .text( function(d) { return d.properties['Name']; })
+          //         .attr("class", "BOCES-name")
 
-      // map.arrangeLabels();
+          // map.arrangeLabels();
     };
 
     this.animateBOCES = function() {
@@ -186,7 +201,6 @@ function ColoradoMap(elementId) {
             map.animate('#district_' + d.properties['OBJECTID']);
         });
     };
-
     this.centerMapProjection = function(){
         // Since we picked the conicConformal projection, we need to also
         // rotate the map so our map doesn't look funky.
@@ -201,7 +215,6 @@ function ColoradoMap(elementId) {
 
         map.projection.scale(s).translate(t);
     };
-
     this.animate = function(selector) {
         // If you want to know more about how this works, check out the
         // css-tricks article at http://css-tricks.com/svg-line-animation-works
@@ -218,7 +231,6 @@ function ColoradoMap(elementId) {
         path.style.transition = path.style.WebkitTransition = 'stroke-dashoffset ' + speed + 's ease';
         path.style.strokeDashoffset = '0';
     };
-
     this.arrangeLabels = function() {
       var map  = this;
       var move = 1;
@@ -255,22 +267,18 @@ function ColoradoMap(elementId) {
       }
     };
 
-    // MOUSE EVENTS 
-    
+    // MOUSE EVENTS
     this.initTooltip = function () {
       map.tooltip = d3.select("body").append("div")   
       .attr("class", "tooltip")               
       .style("opacity", 0);
-    }
-
-
+    };
     this.BOCES_OnClick = function(d,i) {
       $('#region-title-click').text("BOCES: "+d.properties['Name']);
-      $('#showmepanel').show();
+      $('#showme-region').show();
       d3.select(".selected-region").classed("selected-region", false);
       d3.select(this).classed("selected-region",true);      
-    }
-
+    };
     this.BOCES_Mouseover = function(d) {
       map.tooltip
             .transition()
@@ -280,21 +288,18 @@ function ColoradoMap(elementId) {
           .html (d.properties['Name'])
           .style("left", (d3.event.pageX + 28) + "px")
           .style("top", (d3.event.pageY - 28 ) + "px");
-
-    }
+    };
     this.BOCES_Mouseout= function(d) {
       map.tooltip.transition()        
             .duration(500)      
             .style("opacity", 0);   
-    }
-
+    };
     this.district_OnClick = function(d,i) {
       $('#region-title-click').text("School District: "+d.properties['NAME']);
-      $('#showmepanel').show();
+      $('#showme-region').show();
       d3.select(".selected-region").classed("selected-region", false);
       d3.select(this).classed("selected-region",true);      
-    }
-
+    };
     this.district_Mouseover = function(d) {
       map.tooltip
             .transition()
@@ -304,13 +309,45 @@ function ColoradoMap(elementId) {
           .html (d.properties['NAME'])
           .style("left", (d3.event.pageX + 28) + "px")
           .style("top", (d3.event.pageY - 28 ) + "px");
-
-    }
+    };
     this.district_Mouseout= function(d) {
       map.tooltip.transition()        
             .duration(500)      
             .style("opacity", 0);   
+    };
+    // District / BOSE / School List 
+    
+    this.addDistrictList = function() {
+      console.log(map.Districts.features);
+      var list = d3.select('#regionlist');
+
+      newlist = [];
+      for (var i = map.Districts.features.length - 1; i >= 0; i--) {
+        newlist.push(
+          map.Districts.features[i].properties["NAME"]
+          );
+      };
+
+      newlist.sort();
+
+      list.selectAll(".checkbox")
+          .data(newlist)
+        .enter()
+          .append("li")
+          // .append("div").attr("class","checkbox")
+          .append("input")
+            .attr("type", "checkbox")
+            .attr("id", function(d,i) {return "checkbox" + i; });
+      
+      list.selectAll("li")
+          .data(newlist)
+          .append("label")
+            .attr("for", function(d,i) {return "checkbox" + i; })
+            .text(function(d) { return d});
+
+
     }
+    
 
 
 }; // ColoradoMap
