@@ -65,12 +65,12 @@
                 #map
               .box-panel.compare-panel
                 .panel-header
-                  District Comparison
+                  Financial Transparency Reports
                 .panel-body
-                  Explore how Districts compare:
+                  Explore How Districts Compare:
                   %ul
                     %li
-                      %a{:href => "http://dev.munetrix.com/sections/charts_sd_aa/chfreereduced.php?FavID=381", :target=>"_blank"} Peer Report for free and reduced lunch
+                      %a{:href => "http://dev.munetrix.com/sections/charts_sd_aa/chfreereduced.php?FavID=381", :target=>"_blank"} Peer Report for Free and Reduced Lunch
                     %li
                       %a{:href => "http://dev.munetrix.com/sections/charts_sd/chefficiency_sd.php?IsdID=72188&Type=District",:target=>"_blank"} Northeast Region  Districts Expenditure Report
 
@@ -78,23 +78,29 @@
               %h2 Financial Summary
               .box-panel
                 .panel-header
-                  Revenues
+                  .revenue-title
+                    Revenues
                 .panel-body
-                  Overall Revenues For Local Education Agencies Throughout Colorado
-                / .panel-footer.button
+                  .number
+                    $ 787 Million
+                  .description
+                    Overall Revenues For Local Education Agencies Throughout Colorado
                 .button-part
-                  %a.btn.btn-block.btn-primary.lighter{:href => "http://cde.budget.socrata.com/#!/year/default/revenue/0/district_name", :title => "Explore Revenues",:target=>"_blank"}
+                  %a.btn.btn-block.btn-primary.lighter{:href => "http://http://finance.cdefinancialtransparency.com//#!/year/default/revenue/0/district_name", :title => "Explore Revenues",:target=>"_blank"}
                     Explore
                     %span.ng-binding{"ng-bind" => "revenueTitle"} Revenues
 
 
               .box-panel
                 .panel-header
-                  Expenditures
+                  .expenditure-title
+                    Expenditures
                 .panel-body
+                  .number
+                    $ 644 Million
                   Overall Expenditures For Local Education Agencies Throughout Colorado 
-                .button-part
-                  %a.btn.btn-block.btn-primary.lighter{:href => "http://cde.budget.socrata.com/#!/year/default/operating/0/district_name", :title => "Explore Revenues",:target=>"_blank"}
+                .button-part2
+                  %a.btn.btn-block.btn-primary.lighter{:href => "http://http://finance.cdefinancialtransparency.com//#!/year/default/operating/0/district_name", :title => "Explore Revenues",:target=>"_blank"}
                     Explore
                     %span.ng-binding{"ng-bind" => "revenueTitle"} Expenditures
 
@@ -109,6 +115,9 @@
                       #region-link1
                     %li
                       #region-link2
+                    %li
+                      #region-link3
+
                     / %a Transparency Portal Link
                 .panel-body
                   .snippet

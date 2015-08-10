@@ -327,7 +327,8 @@ function ColoradoMap(elementId) {
                     " target=\"_blank\"> District's Revenue Data </a>");
         d3.select("#region-link2").html("<a href="+ d.properties.expenditure_budget_link + 
                    " target=\"_blank\">  District's Expenditure Data</a>");
-
+        d3.select("#region-link3").html("<a href="+ d.properties.expenditure_munetrix_link + 
+                   " target=\"_blank\"> How " + d.properties['NAME'] + " Compares to the Regional Average Expenditure </a>");
 
           $('#showme-region').show();
       }
