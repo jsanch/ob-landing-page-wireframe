@@ -52,15 +52,15 @@ function ColoradoMap(elementId) {
                       d3.select("#subregion-links").selectAll("ul").remove();
   
                       $("#subregion-links .snippet").show();
-                      var schools = ["Falmouth School","Harker School","Menlo School","Pittsfield School","Thunder Mountian School District","West Colorado School"];
+                      var schools = ["Falmouth School","Harker School","Menlo School","Pittsfield School","Thunder Mountain School District","West Colorado School"];
                       d3.select("#subregion-links")
                         .append("ul").selectAll("li")
                        .data(schools)
                       .enter()
                         .append("li")
                         .text(function (d) {return d;})
-                      d3.select("#region-link1").html("<a href=\"http://finance.cdefinancialtransparency.com/#!/year/default/revenue/0/district_name/Thunder+Mountian/0/loc_title\" target=\"_blank\"> District's Revenue Data </a>");
-                      d3.select("#region-link2").html("<a href=\"http://finance.cdefinancialtransparency.com/#!/year/default/operating/0/district_name/Thunder+Mountian/0/loc_title\" target=\"_blank\">  District's Expenditure Data</a>");
+                      d3.select("#region-link1").html("<a href=\"http://finance.cdefinancialtransparency.com/#!/year/default/revenue/0/district_name/Thunder+Mountain/0/loc_title\" target=\"_blank\"> District's Revenue Data </a>");
+                      d3.select("#region-link2").html("<a href=\"http://finance.cdefinancialtransparency.com/#!/year/default/operating/0/district_name/Thunder+Mountain/0/loc_title\" target=\"_blank\">  District's Expenditure Data</a>");
                       d3.select("#region-link3").html("<a href=\"http://dev.munetrix.com/sections/charts_sd/chhowallocates.php?AnnualDataID=25094&Orientation=Function&FundCode=1\" target=\"_blank\"> How Thunder Mountain Compares to the Regional Average Expenditure </a>");
                         $('#showme-region').show();
                   
