@@ -141,17 +141,17 @@ padding-right: 0;
 }
 .panel-scroll {
     overflow: scroll;
-    height: 90%;
+    height: 81%;
     /*position: absolute;*/
     bottom: 0;
-    top: 350px;
+    /*top: 350px;*/
     width: 100%;
     /*margin-bottom: -10%;*/
 
 }
 .panel-scroll2 {
     overflow: scroll;
-    height: 30%;
+    height: 10%;
     width: 100%;
     padding-bottom: 0;
 
