@@ -65,9 +65,9 @@
                 #map
               .box-panel.compare-panel
                 .panel-header
-                  How District's Compare
+                  District Comparison
                 .panel-body
-                  Explore this region's Budget data:
+                  Explore how Districts compare:
                   %ul
                     %li
                       %a{:href => "http://dev.munetrix.com/sections/charts_sd_aa/chfreereduced.php?FavID=381", :target=>"_blank"} Peer Report for free and reduced lunch
@@ -102,7 +102,7 @@
                 .panel-header
                   #region-title Region Title
                 .panel-body
-                  #region-info.panel-scroll2
+                  #region-info
                     Explore this region's Budget data:
                   %ul
                     %li
@@ -110,7 +110,8 @@
                     %li
                       #region-link2
                     / %a Transparency Portal Link
-                  #subregion-links
+                .panel-body
+                  #subregion-links.panel-scroll2
                     .snippet
                       Explore this district's school data: 
               / .box-panel#showme-schools
