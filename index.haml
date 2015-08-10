@@ -76,54 +76,56 @@
 
             .right-panel.col-sm-5
               %h2 Financial Summary
-              .box-panel
-                .panel-header
-                  .revenue-title
-                    Revenues
-                .panel-body
-                  .number
-                    $ 787 Million
-                  .description
-                    Overall Revenues For Local Education Agencies Throughout Colorado
-                .button-part
-                  %a.btn.btn-block.btn-primary.lighter{:href => "http://http://finance.cdefinancialtransparency.com//#!/year/default/revenue/0/district_name", :title => "Explore Revenues",:target=>"_blank"}
-                    Explore
-                    %span.ng-binding{"ng-bind" => "revenueTitle"} Revenues
+              .row
+                .col-sm-6
+                  .box-panel
+                    .panel-header
+                      .revenue-title
+                        Revenues
+                    .panel-body
+                      .number
+                        $ 787 Million
+                      .description
+                        Overall Revenues For Local Education Agencies Throughout Colorado
+                    .button-part
+                      %a.btn.btn-block.btn-primary.lighter{:href => "http://finance.cdefinancialtransparency.com//#!/year/default/revenue/0/district_name", :title => "Explore Revenues",:target=>"_blank"}
+                        Explore
+                        %span.ng-binding{"ng-bind" => "revenueTitle"} Revenues
 
+                .col-sm-6
+                  .box-panel
+                    .panel-header
+                      .expenditure-title
+                        Expenditures
+                    .panel-body
+                      .number
+                        $ 644 Million
+                      Overall Expenditures For Local Education Agencies Throughout Colorado 
+                    .button-part2
+                      %a.btn.btn-block.btn-primary.lighter{:href => "http://finance.cdefinancialtransparency.com//#!/year/default/operating/0/district_name", :title => "Explore Revenues",:target=>"_blank"}
+                        Explore
+                        %span.ng-binding{"ng-bind" => "revenueTitle"} Expenditures
+              .row
+                .box-panel2#showme-region
+                  .panel-header
+                    #region-title Region Title
+                  .panel-body
+                    #region-info
+                      Explore this region's Budget data:
+                    %ul
+                      %li
+                        #region-link1
+                      %li
+                        #region-link2
+                      %li
+                        #region-link3
 
-              .box-panel
-                .panel-header
-                  .expenditure-title
-                    Expenditures
-                .panel-body
-                  .number
-                    $ 644 Million
-                  Overall Expenditures For Local Education Agencies Throughout Colorado 
-                .button-part2
-                  %a.btn.btn-block.btn-primary.lighter{:href => "http://http://finance.cdefinancialtransparency.com//#!/year/default/operating/0/district_name", :title => "Explore Revenues",:target=>"_blank"}
-                    Explore
-                    %span.ng-binding{"ng-bind" => "revenueTitle"} Expenditures
-
-              .box-panel#showme-region
-                .panel-header
-                  #region-title Region Title
-                .panel-body
-                  #region-info
-                    Explore this region's Budget data:
-                  %ul
-                    %li
-                      #region-link1
-                    %li
-                      #region-link2
-                    %li
-                      #region-link3
-
-                    / %a Transparency Portal Link
-                .panel-body
-                  .snippet
-                    Explore this district's school data: 
-                  #subregion-links.panel-scroll2
-              / .box-panel#showme-schools
+                      / %a Transparency Portal Link
+                  .panel-body
+                    .snippet
+                      Explore this district's school data: 
+                    #subregion-links.panel-scroll2
+                / .box-panel#showme-schools
 
 
 
