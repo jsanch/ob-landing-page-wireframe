@@ -42,6 +42,29 @@ function ColoradoMap(elementId) {
                     map.drawDistricts();
                     map.animateDistricts();
                     map.addDistrictList(); 
+                   $("#checkbox158").click(function() { 
+                      d3.select(".selected-region").classed("selected-region", false);
+                      d3.select("#district_70").classed("selected-region",true);
+                      
+                      $("#subregion-links .snippet").hide();
+                      // Populate the show me panel 
+                      $('#region-title').text("School District: Thunder Mountain");                      
+                      d3.select("#subregion-links").selectAll("ul").remove();
+  
+                      $("#subregion-links .snippet").show();
+                      var schools = ["Falmouth School","Harker School","Menlo School","Pittsfield School","Thunder Mountian School District","West Colorado School"];
+                      d3.select("#subregion-links")
+                        .append("ul").selectAll("li")
+                       .data(schools)
+                      .enter()
+                        .append("li")
+                        .text(function (d) {return d;})
+                      d3.select("#region-link1").html("<a href=\"http://finance.cdefinancialtransparency.com/#!/year/default/revenue/0/district_name/Thunder+Mountian/0/loc_title\" target=\"_blank\"> District's Revenue Data </a>");
+                      d3.select("#region-link2").html("<a href=\"http://finance.cdefinancialtransparency.com/#!/year/default/operating/0/district_name/Thunder+Mountian/0/loc_title\" target=\"_blank\">  District's Expenditure Data</a>");
+                      d3.select("#region-link3").html("<a href=\"http://dev.munetrix.com/sections/charts_sd/chhowallocates.php?AnnualDataID=25094&Orientation=Function&FundCode=1\" target=\"_blank\"> How Thunder Mountain Compares to the Regional Average Expenditure </a>");
+                        $('#showme-region').show();
+                  
+                    });
                 });
             });
         });
@@ -87,6 +110,8 @@ function ColoradoMap(elementId) {
       $('#showme-region').hide();
 
         map.initTooltip(); 
+
+
     }; // initMap
     this.clear = function() {
         // Clear out the svg data from the foreground and
@@ -415,5 +440,7 @@ function ColoradoMap(elementId) {
 
     var map = new ColoradoMap('map');
     map.initMap(); 
+
+    // 
 
 });
