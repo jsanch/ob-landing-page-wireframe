@@ -303,9 +303,11 @@ function ColoradoMap(elementId) {
            d3.select("#subregion-links").selectAll("ul").remove();
 
       $('#region-title').text("BOCES: "+d.properties['Name']);
-      $('#showme-region').show();
+      $('#showme-region').hide();
       d3.select(".selected-region").classed("selected-region", false);
       d3.select(this).classed("selected-region",true);   
+
+
     };
     this.BOCES_Mouseover = function(d) {
       map.tooltip
