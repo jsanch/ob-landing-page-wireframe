@@ -73,7 +73,7 @@ function ColoradoMap(elementId) {
             d3.select(this).classed("active",true);
 
             d3.select("#ListName").text("Districts");
-            d3.select("#RegionName").text("BOCES");
+            d3.select("#RegionName").text("Districts");
             
             // Remove previous list, add new one.
             map.regionList.selectAll("li").remove();
@@ -82,16 +82,13 @@ function ColoradoMap(elementId) {
         });
 
         map.initTooltip(); 
-
     }; // initMap
-
     this.clear = function() {
         // Clear out the svg data from the foreground and
         // background group elements
         this.layer1.html('');
         this.layer2.html('');
     };
-
     this.drawALL = function() {
         var map = this;
         map.centerMapProjection();
@@ -104,7 +101,6 @@ function ColoradoMap(elementId) {
             map.animateBOCES();
         }, 3000);
     };
-
     this.getRSA = function() {
         var deferred = $.Deferred();
         var map = this;
@@ -114,7 +110,6 @@ function ColoradoMap(elementId) {
         });
         return deferred.promise();
     };
-    
     this.getBOCESPoints = function () {
         var deferred = $.Deferred();
         var map = this;
@@ -124,7 +119,6 @@ function ColoradoMap(elementId) {
         });
         return deferred.promise();    
     };
-    
     this.drawBOCES = function() {
         var map = this;
 
@@ -166,13 +160,11 @@ function ColoradoMap(elementId) {
 
           // map.arrangeLabels();
     };
-
     this.animateBOCES = function() {
         map.layer2.selectAll('path').each(function(d, i) {
             map.animate('#BOCES_' + d.properties['OBJECTID']);
         });
     };
-
     this.getDistricts = function() {
         var deferred = $.Deferred();
         var map = this;
@@ -182,7 +174,6 @@ function ColoradoMap(elementId) {
         });
         return deferred.promise();
     };
-
     this.drawDistricts = function() {
         var map = this;
 
@@ -202,7 +193,6 @@ function ColoradoMap(elementId) {
             .on('click', map.district_OnClick)
             .on('mouseout', map.district_Mouseout)
     };
-
     this.animateDistricts = function() {
         map.layer1.selectAll('path').each(function(d, i) {
             map.animate('#district_' + d.properties['OBJECTID']);
@@ -273,7 +263,6 @@ function ColoradoMap(elementId) {
            });
       }
     };
-
     // MOUSE EVENTS
     this.initTooltip = function () {
       map.tooltip = d3.select("body").append("div")   
@@ -284,7 +273,7 @@ function ColoradoMap(elementId) {
       $('#region-title-click').text("BOCES: "+d.properties['Name']);
       $('#showme-region').show();
       d3.select(".selected-region").classed("selected-region", false);
-      d3.select(this).classed("selected-region",true);      
+      d3.select(this).classed("selected-region",true);   
     };
     this.BOCES_Mouseover = function(d) {
       map.tooltip
@@ -323,7 +312,6 @@ function ColoradoMap(elementId) {
             .style("opacity", 0);   
     };
     // District / BOSE / School List 
-    
     this.addDistrictList = function() {
       newlist = [];
       for (var i = map.Districts.features.length - 1; i >= 0; i--) {
@@ -348,8 +336,7 @@ function ColoradoMap(elementId) {
           .append("label")
             .attr("for", function(d,i) {return "checkbox" + i; })
             .text(function(d) { return d});
-    }
-
+    };
     this.addBOCESList = function() {
       newlist = [];
       console.log(map.BOCESPoints);
@@ -375,10 +362,16 @@ function ColoradoMap(elementId) {
           .append("label")
             .attr("for", function(d,i) {return "checkbox" + i; })
             .text(function(d) { return d});
-
-
-    }
+    };
     
+
+
+
+
+
+
+
+
 
 
 }; // ColoradoMap
