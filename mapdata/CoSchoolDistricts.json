@@ -9713,8 +9713,8 @@
         "LOGRECNO": "0009869",
         "RSA": 4,
         "expenditure_munetrix_link":"http://dev.munetrix.com/sections/charts_sd/chhowallocates.php?AnnualDataID=25094&Orientation=Function&FundCode=1",        
-        "revenue_budget_link":"http://cde.budget.socrata.com/#!/year/default/revenue/0/district_name/Thunder+Mountian/0/loc_title",
-        "expenditure_budget_link":"http://cde.budget.socrata.com/#!/year/default/operating/0/district_name/Thunder+Mountian/0/loc_title",
+        "revenue_budget_link":"http://finance.cdefinancialtransparency.com/#!/year/default/revenue/0/district_name/Thunder+Mountian/0/loc_title",
+        "expenditure_budget_link":"http://finance.cdefinancialtransparency.com/#!/year/default/operating/0/district_name/Thunder+Mountian/0/loc_title",
         "schools": [
           "Thunder Mountian School District",
           "West Colorado School",
@@ -23798,8 +23798,8 @@
         "LOGRECNO": "0009880",
         "RSA": 6,
         "expenditure_munetrix_link":"http://dev.munetrix.com/sections/charts_sd/chhowallocates.php?AnnualDataID=25092&Orientation=Function&FundCode=1",        
-        "revenue_budget_link":"http://cde.budget.socrata.com/#!/year/default/revenue/0/district_name/Whispering+Pines/0/loc_title",
-        "expenditure_budget_link":"http://cde.budget.socrata.com/#!/year/default/operating/0/district_name/Whispering+Pines/0/loc_title",
+        "revenue_budget_link":"http://finance.cdefinancialtransparency.com/#!/year/default/revenue/0/district_name/Whispering+Pines/0/loc_title",
+        "expenditure_budget_link":"http://finance.cdefinancialtransparency.com/#!/year/default/operating/0/district_name/Whispering+Pines/0/loc_title",
         "schools": [
           "Whispering Pines School District",
           "Bryant School",
