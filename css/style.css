@@ -86,7 +86,7 @@ p, div {
 
 .smooth-panel{
     width: 100%;
-    height: 85%;
+    height: auto;
     /*border-style: solid;*/
     /*border-color: black;*/
     /*margin-top: -1%;*/
@@ -131,7 +131,7 @@ padding-right: 0;
 }
 .panel-scroll {
     overflow: scroll;
-    height: 100%;
+    height: 83.4%;
     width: 100%;
     padding-bottom: 0;
 
@@ -270,7 +270,7 @@ div.tooltip:after {
 }
 
 #regionlist li {
-    font-size: 9.5px;
+    font-size: 10px;
     margin-bottom: 10px;
 }
 #regionlist li:hover {
