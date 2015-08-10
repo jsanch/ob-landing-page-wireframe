@@ -46,10 +46,6 @@ function ColoradoMap(elementId) {
             });
         });
 
-        $('#all').click(function() {
-            map.clear();
-            map.drawALL();
-        });
         $('#BOCES').click(function() {
             map.clear();
             map.drawBOCES();
@@ -64,6 +60,10 @@ function ColoradoMap(elementId) {
             map.regionList.selectAll("li").remove();
             map.addBOCESList();
         
+              $('#showme-region').hide();
+                    $("#subregion-links .snippet").hide();
+
+
         });
         $('#districts').click(function() {
             map.clear();
@@ -79,7 +79,12 @@ function ColoradoMap(elementId) {
             map.regionList.selectAll("li").remove();
             map.addDistrictList(); 
 
+              $('#showme-region').hide();
+                    $("#subregion-links .snippet").hide();
+
+
         });
+      $('#showme-region').hide();
 
         map.initTooltip(); 
     }; // initMap
@@ -216,7 +221,7 @@ function ColoradoMap(elementId) {
         // If you want to know more about how this works, check out the
         // css-tricks article at http://css-tricks.com/svg-line-animation-works
         // and then look at http://jakearchibald.com/2013/animated-line-drawing-svg/
-        var speed = 3.5; // seconds
+        var speed = 1.5; // seconds
         var path = document.querySelector(selector);
         var length = path.getTotalLength();
 
@@ -270,6 +275,8 @@ function ColoradoMap(elementId) {
       .style("opacity", 0);
     };
     this.BOCES_OnClick = function(d,i) {
+           d3.select("#subregion-links").selectAll("ul").remove();
+
       $('#region-title').text("BOCES: "+d.properties['Name']);
       $('#showme-region').show();
       d3.select(".selected-region").classed("selected-region", false);
@@ -295,30 +302,39 @@ function ColoradoMap(elementId) {
       d3.select(this).classed("selected-region",true);  
       
 
+      $("#subregion-links .snippet").hide();
+
       // Populate the show me panel 
       $('#region-title').text("School District: "+d.properties['NAME']);
       
       d3.select("#subregion-links").selectAll("ul").remove();
 
       if (d.properties.schools == undefined) {
-        console.log(d.properties)
         console.log( "No school data");
+         $('#showme-region').hide();
+
       } else {
+
         $("#subregion-links .snippet").show();
         d3.select("#subregion-links")
           .append("ul").selectAll("li")
-         .data(d.properties.schools)
+         .data(d.properties.schools.sort())
         .enter()
           .append("li")
           .text(function (d) {return d;})
 
+        d3.select("#region-link1").html("<a href="+ d.properties.revenue_budget_link +
+                    " target=\"_blank\"> District's Revenue Data </a>");
+        d3.select("#region-link2").html("<a href="+ d.properties.expenditure_budget_link + 
+                   " target=\"_blank\">  District's Expenditure Data</a>");
+
+
+          $('#showme-region').show();
       }
 
-      $('#showme-region').show();
+      
       
 
-
-      console.log(d.properties.schools); 
     };
     this.district_Mouseover = function(d) {
       map.tooltip
@@ -363,7 +379,6 @@ function ColoradoMap(elementId) {
     };
     this.addBOCESList = function() {
       newlist = [];
-      console.log(map.BOCESPoints);
       for (var i = map.BOCESPoints.features.length - 1; i >= 0; i--) {
         newlist.push(
           map.BOCESPoints.features[i].properties["Name"]
@@ -371,7 +386,6 @@ function ColoradoMap(elementId) {
       };
       newlist.sort();
 
-      console.log(newlist);
       map.regionList.selectAll(".checkbox")
           .data(newlist)
         .enter()

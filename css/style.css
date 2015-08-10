@@ -24,7 +24,17 @@ p, div {
     line-height: 6rem;
     margin-left: 15px;}
 .logo img {
-    height: 28px;
+    margin-top: -5px;
+    height: 40px;
+}
+.left-logo {
+    text-align: left;
+/*    padding-left: 50%;
+    margin-left: 50%;
+*/    }
+.left-logo  img{
+    height: 50px;
+    margin-top: -10px;
 }
 /* navbar */
 .navbar-default {
@@ -124,7 +134,7 @@ padding-right: 0;
     border-bottom-width: thin;
     border-bottom-style: solid;
     border-bottom-color: #DADADA;
-}
+}f
 .panel-body {
     padding-top: 5px;
     /*padding-bottom: 10px;*/
@@ -137,11 +147,42 @@ padding-right: 0;
 
 }
 
+
+.button-part{
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-bottom: 1%;
+}
+
+.panel-footer {
+    /*background-color: #F47E1F;*/
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+
+}
+/*.panel-footer .btn {
+padding: 12px 15px;
+    font-size: 1.7rem;
+    line-height: 1.563;
+    border-radius: 0px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+*/
+
+
+}
+
 /* Show me panel */ 
 
 #showme-region {
  display: none;
- background-color: #EAFFF1;
+ background-color: rgba(234, 255, 241, 0.33);
+ overflow: scroll;
+ height: 30%;
+
 }
 
 
@@ -295,3 +336,23 @@ div.tooltip:after {
  padding-top: 10px;
  display: none;
 }
+
+
+.compare-panel {
+    /*padding-left: 5%;*/
+    margin-left: 5%;
+/*    padding-right: 10%;
+*/    margin-right: 10%;
+    width: 88%;
+
+}
+
+.panel-scrolll2 {
+    overflow: scroll;
+    height: 10%;
+    width: 100%;
+    padding-bottom: 0;
+
+}
+
+

@@ -35,6 +35,12 @@
               %a.logo.navbar-brand{:href => "#"}
                 %img{:alt => "Brand", :src => "https://www.cde.state.co.us/sites/default/files/pics/cdecomm/co_cde_shield_300_rgb-125x240.png"}
               %span.customerName Colorado Department of Education
+          .navbar-collapse.collapse
+            %ul.nav.navbar-nav.navbar-right
+              %li
+                %a.left-logo.navbar-brand{:href => "#"}
+                  %img{:alt => "Brand", :src => "http://www.wpsdk12.org/wp-content/uploads/2014/07/Financial-Transparency-icon.jpg"}
+
       .container-fluid
         .row
           .sub-navbar
@@ -57,20 +63,53 @@
             .middle-panel.col-md-5.nopadding
               .map-container
                 #map
+              .box-panel.compare-panel
+                .panel-header
+                  How District's Compare
+                .panel-body
+                  Explore this region's Budget data:
+                  %ul
+                    %li
+                      %a{:href => "http://dev.munetrix.com/sections/charts_sd_aa/chfreereduced.php?FavID=381", :target=>"_blank"} Peer Report for free and reduced lunch
+                    %li
+                      %a{:href => "http://dev.munetrix.com/sections/charts_sd/chefficiency_sd.php?IsdID=72188&Type=District",:target=>"_blank"} Northeast Region  Districts Expenditure Report
+
             .right-panel.col-sm-5
+              %h2 Financial Summary
               .box-panel
                 .panel-header
-                  #RegionName Districts
+                  Revenues
                 .panel-body
-                  %p Colrado Lorem Ipsum, legislation was enacted requiring each local education agency to post on-line, for free public access, Local Education. Agencies' (LEAs') annual budgets, annual financial statements, salary schedules or policies, accounts payable check registers and credit, debit, and purchase card statements Lorem Ipsum
+                  Overall Revenues For Local Education Agencies Throughout Colorado
+                / .panel-footer.button
+                .button-part
+                  %a.btn.btn-block.btn-primary.lighter{:href => "http://cde.budget.socrata.com/#!/year/default/revenue/0/district_name", :title => "Explore Revenues",:target=>"_blank"}
+                    Explore
+                    %span.ng-binding{"ng-bind" => "revenueTitle"} Revenues
+
+
+              .box-panel
+                .panel-header
+                  Expenditures
+                .panel-body
+                  Overall Expenditures For Local Education Agencies Throughout Colorado 
+                .button-part
+                  %a.btn.btn-block.btn-primary.lighter{:href => "http://cde.budget.socrata.com/#!/year/default/operating/0/district_name", :title => "Explore Revenues",:target=>"_blank"}
+                    Explore
+                    %span.ng-binding{"ng-bind" => "revenueTitle"} Expenditures
+
               .box-panel#showme-region
                 .panel-header
                   #region-title Region Title
                 .panel-body
-                  #region-info
-                    Explore this region data:
-                  #region-link
-                    %a Transparency Portal Link
+                  #region-info.panel-scroll2
+                    Explore this region's Budget data:
+                  %ul
+                    %li
+                      #region-link1
+                    %li
+                      #region-link2
+                    / %a Transparency Portal Link
                   #subregion-links
                     .snippet
                       Explore this district's school data: 
