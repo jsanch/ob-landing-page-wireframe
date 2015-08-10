@@ -4,7 +4,8 @@ function ColoradoMap(elementId) {
 
     this.divId = elementId;
     this.divSelector = '#' + elementId;
-    this.tooltip = ''
+    this.tooltip = '';
+    this.regionList = d3.select('#regionlist');
 
     this.initMap = function() {
 
@@ -60,7 +61,9 @@ function ColoradoMap(elementId) {
             d3.select("#ListName").text("List Of BOCES");
             d3.select("#RegionName").text("BOCES");
 
-
+            map.regionList.selectAll("li").remove();
+            map.addBOCESList();
+        
         });
         $('#districts').click(function() {
             map.clear();
@@ -71,6 +74,10 @@ function ColoradoMap(elementId) {
 
             d3.select("#ListName").text("Districts");
             d3.select("#RegionName").text("BOCES");
+            
+            // Remove previous list, add new one.
+            map.regionList.selectAll("li").remove();
+            map.addDistrictList(); 
 
         });
 
@@ -318,9 +325,6 @@ function ColoradoMap(elementId) {
     // District / BOSE / School List 
     
     this.addDistrictList = function() {
-      console.log(map.Districts.features);
-      var list = d3.select('#regionlist');
-
       newlist = [];
       for (var i = map.Districts.features.length - 1; i >= 0; i--) {
         newlist.push(
@@ -330,7 +334,7 @@ function ColoradoMap(elementId) {
 
       newlist.sort();
 
-      list.selectAll(".checkbox")
+      map.regionList.selectAll(".checkbox")
           .data(newlist)
         .enter()
           .append("li")
@@ -339,7 +343,34 @@ function ColoradoMap(elementId) {
             .attr("type", "checkbox")
             .attr("id", function(d,i) {return "checkbox" + i; });
       
-      list.selectAll("li")
+      map.regionList.selectAll("li")
+          .data(newlist)
+          .append("label")
+            .attr("for", function(d,i) {return "checkbox" + i; })
+            .text(function(d) { return d});
+    }
+
+    this.addBOCESList = function() {
+      newlist = [];
+      console.log(map.BOCESPoints);
+      for (var i = map.BOCESPoints.features.length - 1; i >= 0; i--) {
+        newlist.push(
+          map.BOCESPoints.features[i].properties["Name"]
+          );
+      };
+      newlist.sort();
+
+      console.log(newlist);
+      map.regionList.selectAll(".checkbox")
+          .data(newlist)
+        .enter()
+          .append("li")
+          // .append("div").attr("class","checkbox")
+          .append("input")
+            .attr("type", "checkbox")
+            .attr("id", function(d,i) {return "checkbox" + i; });
+      
+      map.regionList.selectAll("li")
           .data(newlist)
           .append("label")
             .attr("for", function(d,i) {return "checkbox" + i; })

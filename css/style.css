@@ -214,7 +214,7 @@ padding-right: 0;
 }*/
 .selected-region{
     fill: green;
-    fill-opacity: 0.85;
+    fill-opacity: 1;
 }
 .selected-region:hover{
     fill: green;
