@@ -72,7 +72,7 @@ function ColoradoMap(elementId) {
             d3.select(".active").classed("active", false);
             d3.select(this).classed("active",true);
 
-            d3.select("#ListName").text("Districts");
+            d3.select("#ListName").text("List of Districts");
             d3.select("#RegionName").text("Districts");
             
             // Remove previous list, add new one.
@@ -299,7 +299,7 @@ function ColoradoMap(elementId) {
     };
     this.district_OnClick = function(d,i) {
       d3.select(".selected-region").classed("selected-region", false);
-      d3.select(this).classed("selected-region",true);  
+        d3.select(this).classed("selected-region",true);  
       
 
       $("#subregion-links .snippet").hide();
@@ -366,9 +366,8 @@ function ColoradoMap(elementId) {
           .data(newlist)
         .enter()
           .append("li")
-          // .append("div").attr("class","checkbox")
-          .append("input")
-            .attr("type", "checkbox")
+          // .append("input")
+            // .attr("type", "checkbox")
             .attr("id", function(d,i) {return "checkbox" + i; });
       
       map.regionList.selectAll("li")
@@ -390,9 +389,8 @@ function ColoradoMap(elementId) {
           .data(newlist)
         .enter()
           .append("li")
-          // .append("div").attr("class","checkbox")
-          .append("input")
-            .attr("type", "checkbox")
+          // .append("input")
+            // .attr("type", "checkbox")
             .attr("id", function(d,i) {return "checkbox" + i; });
       
       map.regionList.selectAll("li")
