@@ -367,12 +367,13 @@ div.tooltip:after {
     box-sizing: border-box;
     color: #333;
     floatleftfont-family: "Open Sans",Helvetica,Arial,sans-serif;
-    font-size: 36px;
-    font-weight: 700;
+    font-size: 30px;
+    font-weight: 600;
     line-height: 54px;
     margin-right: 8px;
     text-transform: capitalize;
     -moz-osx-font-smoothing: grayscale;
+    white-space: nowrap;
 
 }
 
