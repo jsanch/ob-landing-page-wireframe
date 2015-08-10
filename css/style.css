@@ -141,7 +141,7 @@ padding-right: 0;
 
 #showme-region {
  display: none;
- background-color: #DDFAE7;
+ background-color: #EAFFF1;
 }
 
 
@@ -284,5 +284,14 @@ div.tooltip:after {
 
 
 
+/* school/subregion styling */ 
 
+#subregion-links {
+    list-style-type:none;
 
+}
+
+#subregion-links .snippet {
+ padding-top: 10px;
+ display: none;
+}

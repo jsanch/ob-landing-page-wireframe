@@ -270,7 +270,7 @@ function ColoradoMap(elementId) {
       .style("opacity", 0);
     };
     this.BOCES_OnClick = function(d,i) {
-      $('#region-title-click').text("BOCES: "+d.properties['Name']);
+      $('#region-title').text("BOCES: "+d.properties['Name']);
       $('#showme-region').show();
       d3.select(".selected-region").classed("selected-region", false);
       d3.select(this).classed("selected-region",true);   
@@ -291,10 +291,34 @@ function ColoradoMap(elementId) {
             .style("opacity", 0);   
     };
     this.district_OnClick = function(d,i) {
-      $('#region-title-click').text("School District: "+d.properties['NAME']);
-      $('#showme-region').show();
       d3.select(".selected-region").classed("selected-region", false);
-      d3.select(this).classed("selected-region",true);      
+      d3.select(this).classed("selected-region",true);  
+      
+
+      // Populate the show me panel 
+      $('#region-title').text("School District: "+d.properties['NAME']);
+      
+      d3.select("#subregion-links").selectAll("ul").remove();
+
+      if (d.properties.schools == undefined) {
+        console.log(d.properties)
+        console.log( "No school data");
+      } else {
+        $("#subregion-links .snippet").show();
+        d3.select("#subregion-links")
+          .append("ul").selectAll("li")
+         .data(d.properties.schools)
+        .enter()
+          .append("li")
+          .text(function (d) {return d;})
+
+      }
+
+      $('#showme-region').show();
+      
+
+
+      console.log(d.properties.schools); 
     };
     this.district_Mouseover = function(d) {
       map.tooltip
