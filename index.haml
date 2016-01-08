@@ -1,29 +1,28 @@
 %html
   %head
-    %script{:charset => "utf-8", :src => "js/jquery.js"}
-    %script{:charset => "utf-8", :src => "js/d3.js"}
-    %script{:charset => "utf-8", :src => "js/topojson.v1.js"}
-    %script{:charset => "utf-8", :src => "js/moment.js"}
-    %meta{:charset => "utf-8"}/
-    
-    %title CDE | Transparency Map
+    %script{ charset: 'utf-8', src: 'js/jquery.js' }
+    %script{ charset: 'utf-8', src: 'js/d3.js' }
+    %script{ charset: 'utf-8', src: 'js/topojson.v1.js' }
+    %script{ charset: 'utf-8', src: 'js/moment.js' }
+    %meta{ charset: 'utf-8' }
+
+    %title Utah | Transparency Map
 
     / Favicon
-    %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans", :rel => "stylesheet", :type => "text/css"}/
+    %link{ href: 'http://fonts.googleapis.com/css?family=Open+Sans', rel: 'stylesheet', type: 'text/css' }
 
 
-    / ** BOOTSTRAP **/ 
+    / ** BOOTSTRAP **/
     / Latest compiled and minified CSS
-    %link{:href => "css/bootstrap/bootstrap.min.css", :rel => "stylesheet"}/
+    %link{ href: 'css/bootstrap/bootstrap.min.css', rel: 'stylesheet' }
     / Optional theme
-    %link{:href => "css/bootstrap/bootstrap-theme.min.css", :rel => "stylesheet"}/
+    %link{ href: 'css/bootstrap/bootstrap-theme.min.css', rel: 'stylesheet' }
     / Latest compiled and minified JavaScript
-    %script{:src => "js/bootstrap/bootstrap.min.js"}
+    %script{ src: 'js/bootstrap/bootstrap.min.js' }
 
-    / ** MYSTYLE 
-    %link{:href => "http://fonts.googleapis.com/css?family=Lato", :rel => "stylesheet", :type => "text/css"}
-    %link{:href => "css/style.css", :rel => "stylesheet", :type => "text/css"}/
-    %link{:href => "css/checkbox.css", :rel => "stylesheet", :type => "text/css"}/
+    / ** MYSTYLE
+    %link{ href: 'http://fonts.googleapis.com/css?family=Lato', rel: 'stylesheet', type: 'text/css' }
+    %link{ href: 'css/style.css', rel: 'stylesheet', type: 'text/css' }
 
 
   %body
@@ -32,31 +31,31 @@
         .container-fluid
           .navbar-header
             .logo-container
-              %a.logo.navbar-brand{:href => "#"}
-                %img{:alt => "Brand", :src => "https://www.cde.state.co.us/sites/default/files/pics/cdecomm/co_cde_shield_300_rgb-125x240.png"}
-              %span.customerName Colorado Department of Education
+              %a.logo.navbar-brand{ href: '#' }
+                %img{ alt: 'Brand', src: 'assets/utah-logo.png' }
+              %span.customerName Financial Explorer
           .navbar-collapse.collapse
-            %ul.nav.navbar-nav.navbar-right
-              %li
-                %a.left-logo.navbar-brand{:href => "#"}
-                  %img{:alt => "Brand", :src => "http://www.wpsdk12.org/wp-content/uploads/2014/07/Financial-Transparency-icon.jpg"}
+            / %ul.nav.navbar-nav.navbar-right
+            /   %li
+            /     %a.left-logo.navbar-brand{ href: '#' }
+            /       %img{ alt: 'Brand', src: 'http://www.wpsdk12.org/wp-content/uploads/2014/07/Financial-Transparency-icon.jpg' }
 
       .container-fluid
-        .row
-          .sub-navbar
-            %ul.nav.nav-pills
-              %li#BOCES{:role => "presentation"}
-                %a{:href => "#"} BOCES
-              %li#districts.active{:role => "presentation"}
-                %a{:href => "#"} Districts
-              %li#schools{:role => "presentation"}
-                %a{:href => "#"} Schools
+        / .row
+        /   .sub-navbar
+        /     %ul.nav.nav-pills
+        /       %li#BOCES{ role: 'presentation' }
+        /         %a{ href: '#' } BOCES
+        /       %li.active#districts{ role: 'presentation' }
+        /         %a{ href: '#' } Districts
+        /       %li#schools{ role: 'presentation' }
+        /         %a{ href: '#' } Schools
         .row
           .panels.container-fluid.nopadding
             .left-panel.col-sm-2
               .smooth-panel
-                .panel-header 
-                  #ListName List of Districts
+                .panel-header
+                  #ListName Counties
                 .panel-body.panel-scroll
                   %ul#regionlist
 
@@ -70,9 +69,9 @@
                   Explore How Districts Compare:
                   %ul
                     %li
-                      %a{:href => "http://dev.munetrix.com/sections/charts_sd_aa/chfreereduced.php?FavID=381", :target=>"_blank"} Peer Report for Free and Reduced Lunch
+                      %a{ href: 'http://dev.munetrix.com/sections/charts_sd_aa/chfreereduced.php?FavID=381', target: '_blank' } Peer Report for Free and Reduced Lunch
                     %li
-                      %a{:href => "http://dev.munetrix.com/sections/charts_sd/chefficiency_sd.php?IsdID=72188&Type=District",:target=>"_blank"} Northeast Region  Districts Expenditure Report
+                      %a{ href: 'http://dev.munetrix.com/sections/charts_sd/chefficiency_sd.php?IsdID=72188&Type=District', target: '_blank' } Northeast Region  Districts Expenditure Report
 
             .right-panel.col-sm-5
               %h2 Financial Summary
@@ -88,9 +87,9 @@
                       .description
                         Overall Revenues For Local Education Agencies Throughout Colorado
                     .button-part
-                      %a.btn.btn-block.btn-primary.lighter{:href => "http://finance.cdefinancialtransparency.com//#!/year/default/revenue/0/district_name", :title => "Explore Revenues",:target=>"_blank"}
+                      %a.btn.btn-block.btn-primary.lighter{ href: 'http://finance.cdefinancialtransparency.com//#!/year/default/revenue/0/district_name', title: 'Explore Revenues', target: '_blank' }
                         Explore
-                        %span.ng-binding{"ng-bind" => "revenueTitle"} Revenues
+                        %span.ng-binding{ 'ng-bind' => 'revenueTitle' } Revenues
 
                 .col-sm-6
                   .box-panel
@@ -101,11 +100,11 @@
                       .number
                         $ 644 Million
                       .description
-                        Overall Expenditures For Local Education Agencies Throughout Colorado 
+                        Overall Expenditures For Local Education Agencies Throughout Colorado
                     .button-part2
-                      %a.btn.btn-block.btn-primary.lighter{:href => "http://finance.cdefinancialtransparency.com//#!/year/default/operating/0/district_name", :title => "Explore Revenues",:target=>"_blank"}
+                      %a.btn.btn-block.btn-primary.lighter{ href: 'http://finance.cdefinancialtransparency.com//#!/year/default/operating/0/district_name', title: 'Explore Revenues', target: '_blank' }
                         Explore
-                        %span.ng-binding{"ng-bind" => "revenueTitle"} Expenditures
+                        %span.ng-binding{'ng-bind' => 'revenueTitle' } Expenditures
               .row
                 .box-panel2#showme-region
                   .panel-header
@@ -124,10 +123,8 @@
                       / %a Transparency Portal Link
                   .panel-body
                     .snippet
-                      Explore this district's school data: 
-                    #subregion-links.panel-scroll2
+                      Explore this district's school data:
+                    .panel-scroll2#subregion-links
                 / .box-panel#showme-schools
 
-
-
-  %script{:src => "js/viz.js"}
+  %script{ src: 'js/geotest.js' }

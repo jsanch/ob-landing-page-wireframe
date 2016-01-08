@@ -1,4 +1,4 @@
-/*    
+/*
  *
  *  Base STYLING
  *
@@ -11,7 +11,7 @@ p, div {
     font-family: 'Open Sans';
 }
 
-/*    
+/*
  *
  *  NAV BAR
  *
@@ -49,7 +49,7 @@ p, div {
    margin: 0 !important;
 }
 
-/* sub navbar */ 
+/* sub navbar */
 .sub-navbar {
     /*width: 99%;*/
     /*height: 8%;*/
@@ -82,12 +82,12 @@ p, div {
     outline: 0;
 }
 
-/* Side Panel */ 
+/* Side Panel */
 
 
 
 
-/*    
+/*
  *
  *  Main-Component
  *
@@ -111,8 +111,8 @@ padding-right: 0;
 }
 
 
-/* GENERAl Stuff */ 
-.box-panel { 
+/* GENERAl Stuff */
+.box-panel {
     width: 100%;
     /*min-height: 30%;*/
     height: auto;
@@ -190,7 +190,7 @@ padding: 12px 15px;
 
 }
 
-/* Show me panel */ 
+/* Show me panel */
 
 #showme-region {
  display: none;
@@ -215,7 +215,7 @@ padding: 12px 15px;
     /*height: 100%;*/
 }
 
-/*    
+/*
  *
  *  MAP STYLING
  *
@@ -255,7 +255,7 @@ padding: 12px 15px;
 .BOCES:hover {
     stroke: #000;
 }
-.BOCES-name { /* LABELS next to BOCES points */ 
+.BOCES-name { /* LABELS next to BOCES points */
   color: black;
   font-size: 11px;
     -webkit-touch-callout: none;
@@ -281,19 +281,19 @@ padding: 12px 15px;
 
 
 /*TOOLTIP */
-/*div.tooltip {   
-  position: absolute;           
-  text-align: center;           
-  width: auto;                  
-  height: 20px;                 
-  padding: 2px;             
+/*div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: auto;
+  height: 20px;
+  padding: 2px;
   font: 12px sans-serif;
   /*background-color: blue;        */
 /*  color: white;
   background-color: #868682;
-  border: 0px;      
-  border-radius: 8px;           
-  pointer-events: none;         
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
 }*/
 
 div.tooltip  {
@@ -304,7 +304,7 @@ div.tooltip  {
   color: #fff;
   /*border-radius: 2px;*/
   pointer-events: none;
-    border-radius: 8px;           
+    border-radius: 8px;
 
 }
 
@@ -320,7 +320,7 @@ div.tooltip:after {
   pointer-events: none;
 }
 
-/* List of Regions Stytlig */ 
+/* List of Regions Stytlig */
 #regionlist{
   list-style-type:none;
   padding:0;
@@ -342,7 +342,7 @@ div.tooltip:after {
 
 
 
-/* school/subregion styling */ 
+/* school/subregion styling */
 
 #subregion-links {
     list-style-type:none;
@@ -636,7 +636,7 @@ opacity: 0.7;
 }
 
 
-.box-panel2 { 
+.box-panel2 {
     width: 95%;
     height: auto;
     background-color: white;

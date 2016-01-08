@@ -41,16 +41,16 @@ function ColoradoMap(elementId) {
                     map.centerMapProjection();
                     map.drawDistricts();
                     map.animateDistricts();
-                    map.addDistrictList(); 
-                   $("#checkbox158").click(function() { 
+                    map.addDistrictList();
+                   $("#checkbox158").click(function() {
                       d3.select(".selected-region").classed("selected-region", false);
                       d3.select("#district_70").classed("selected-region",true);
-                      
+
                       $("#subregion-links .snippet").hide();
-                      // Populate the show me panel 
-                      $('#region-title').text("School District: Thunder Mountain");                      
+                      // Populate the show me panel
+                      $('#region-title').text("School District: Thunder Mountain");
                       d3.select("#subregion-links").selectAll("ul").remove();
-  
+
                       $("#subregion-links .snippet").show();
                       var schools = ["Falmouth School","Harker School","Menlo School","Pittsfield School","Thunder Mountain School District","West Colorado School"];
                       d3.select("#subregion-links")
@@ -63,7 +63,7 @@ function ColoradoMap(elementId) {
                       d3.select("#region-link2").html("<a href=\"http://finance.cdefinancialtransparency.com/#!/year/default/operating/0/district_name/Thunder+Mountain/0/loc_title\" target=\"_blank\">  District's Expenditure Data</a>");
                       d3.select("#region-link3").html("<a href=\"http://dev.munetrix.com/sections/charts_sd/chhowallocates.php?AnnualDataID=25094&Orientation=Function&FundCode=1\" target=\"_blank\"> How Thunder Mountain Compares to the Regional Average Expenditure </a>");
                         $('#showme-region').show();
-                  
+
                     });
                 });
             });
@@ -82,7 +82,7 @@ function ColoradoMap(elementId) {
 
             map.regionList.selectAll("li").remove();
             map.addBOCESList();
-        
+
               $('#showme-region').hide();
                     $("#subregion-links .snippet").hide();
 
@@ -97,10 +97,10 @@ function ColoradoMap(elementId) {
 
             d3.select("#ListName").text("List of Districts");
             d3.select("#RegionName").text("Districts");
-            
+
             // Remove previous list, add new one.
             map.regionList.selectAll("li").remove();
-            map.addDistrictList(); 
+            map.addDistrictList();
 
               $('#showme-region').hide();
                     $("#subregion-links .snippet").hide();
@@ -109,7 +109,7 @@ function ColoradoMap(elementId) {
         });
       $('#showme-region').hide();
 
-        map.initTooltip(); 
+        map.initTooltip();
 
 
     }; // initMap
@@ -122,7 +122,7 @@ function ColoradoMap(elementId) {
     this.drawALL = function() {
         var map = this;
         map.centerMapProjection();
-        
+
         map.drawDistricts();
         map.animateDistricts();
 
@@ -147,7 +147,7 @@ function ColoradoMap(elementId) {
             map.BOCESPoints = response;
             deferred.resolve();
         });
-        return deferred.promise();    
+        return deferred.promise();
     };
     this.drawBOCES = function() {
         var map = this;
@@ -176,7 +176,7 @@ function ColoradoMap(elementId) {
               .attr("r", "10px")
               .attr('class','BOCES')
               .on('mouseover',map.BOCES_Mouseover)
-              .on('click', map.BOCES_OnClick)    
+              .on('click', map.BOCES_OnClick)
           //   var labeles = map.layer2.selectAll("text")
           //         .data(map.BOCESPoints.features)
           //         .enter()
@@ -281,7 +281,7 @@ function ColoradoMap(elementId) {
                           tt = d3.transform(d3.select(this).attr("transform")),
                           to = d3.transform(d3.select(that).attr("transform"));
                       move += Math.abs(dx) + Math.abs(dy);
-                    
+
                       to.translate = [ to.translate[0] + dx, to.translate[1] + dy ];
                       tt.translate = [ tt.translate[0] - dx, tt.translate[1] - dy ];
                       d3.select(this).attr("transform", "translate(" + tt.translate + ")");
@@ -295,8 +295,8 @@ function ColoradoMap(elementId) {
     };
     // MOUSE EVENTS
     this.initTooltip = function () {
-      map.tooltip = d3.select("body").append("div")   
-      .attr("class", "tooltip")               
+      map.tooltip = d3.select("body").append("div")
+      .attr("class", "tooltip")
       .style("opacity", 0);
     };
     this.BOCES_OnClick = function(d,i) {
@@ -305,7 +305,7 @@ function ColoradoMap(elementId) {
       $('#region-title').text("BOCES: "+d.properties['Name']);
       $('#showme-region').hide();
       d3.select(".selected-region").classed("selected-region", false);
-      d3.select(this).classed("selected-region",true);   
+      d3.select(this).classed("selected-region",true);
 
 
     };
@@ -320,20 +320,20 @@ function ColoradoMap(elementId) {
           .style("top", (d3.event.pageY - 28 ) + "px");
     };
     this.BOCES_Mouseout= function(d) {
-      map.tooltip.transition()        
-            .duration(500)      
-            .style("opacity", 0);   
+      map.tooltip.transition()
+            .duration(500)
+            .style("opacity", 0);
     };
     this.district_OnClick = function(d,i) {
       d3.select(".selected-region").classed("selected-region", false);
-        d3.select(this).classed("selected-region",true);  
-      
+        d3.select(this).classed("selected-region",true);
+
 
       $("#subregion-links .snippet").hide();
 
-      // Populate the show me panel 
+      // Populate the show me panel
       $('#region-title').text("School District: "+d.properties['NAME']);
-      
+
       d3.select("#subregion-links").selectAll("ul").remove();
 
       if (d.properties.schools == undefined) {
@@ -352,16 +352,16 @@ function ColoradoMap(elementId) {
 
         d3.select("#region-link1").html("<a href="+ d.properties.revenue_budget_link +
                     " target=\"_blank\"> District's Revenue Data </a>");
-        d3.select("#region-link2").html("<a href="+ d.properties.expenditure_budget_link + 
+        d3.select("#region-link2").html("<a href="+ d.properties.expenditure_budget_link +
                    " target=\"_blank\">  District's Expenditure Data</a>");
-        d3.select("#region-link3").html("<a href="+ d.properties.expenditure_munetrix_link + 
+        d3.select("#region-link3").html("<a href="+ d.properties.expenditure_munetrix_link +
                    " target=\"_blank\"> How " + d.properties['NAME'] + " Compares to the Regional Average Expenditure </a>");
 
           $('#showme-region').show();
       }
 
-      
-      
+
+
 
     };
     this.district_Mouseover = function(d) {
@@ -375,11 +375,11 @@ function ColoradoMap(elementId) {
           .style("top", (d3.event.pageY - 28 ) + "px");
     };
     this.district_Mouseout= function(d) {
-      map.tooltip.transition()        
-            .duration(500)      
-            .style("opacity", 0);   
+      map.tooltip.transition()
+            .duration(500)
+            .style("opacity", 0);
     };
-    // District / BOSE / School List 
+    // District / BOSE / School List
     this.addDistrictList = function() {
       newlist = [];
       for (var i = map.Districts.features.length - 1; i >= 0; i--) {
@@ -397,7 +397,7 @@ function ColoradoMap(elementId) {
           // .append("input")
             // .attr("type", "checkbox")
             .attr("id", function(d,i) {return "checkbox" + i; });
-      
+
       map.regionList.selectAll("li")
           .data(newlist)
           .append("label")
@@ -420,14 +420,14 @@ function ColoradoMap(elementId) {
           // .append("input")
             // .attr("type", "checkbox")
             .attr("id", function(d,i) {return "checkbox" + i; });
-      
+
       map.regionList.selectAll("li")
           .data(newlist)
           .append("label")
             .attr("for", function(d,i) {return "checkbox" + i; })
             .text(function(d) { return d});
     };
-    
+
 
 
 
@@ -441,8 +441,8 @@ function ColoradoMap(elementId) {
 }; // ColoradoMap
 
     var map = new ColoradoMap('map');
-    map.initMap(); 
+    map.initMap();
 
-    // 
+    //
 
 });

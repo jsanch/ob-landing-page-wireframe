@@ -5,7 +5,7 @@
     <script charset='utf-8' src='js/topojson.v1.js'></script>
     <script charset='utf-8' src='js/moment.js'></script>
     <meta charset='utf-8'>
-    <title>CDE | Transparency Map</title>
+    <title>Utah | Transparency Map</title>
     <!-- Favicon -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <!-- ** BOOTSTRAP **/ -->
@@ -18,7 +18,6 @@
     <!-- ** MYSTYLE -->
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href='css/style.css' rel='stylesheet' type='text/css'>
-    <link href='css/checkbox.css' rel='stylesheet' type='text/css'>
   </head>
   <body>
     <div class='main-component'>
@@ -27,44 +26,35 @@
           <div class='navbar-header'>
             <div class='logo-container'>
               <a class='logo navbar-brand' href='#'>
-                <img alt='Brand' src='https://www.cde.state.co.us/sites/default/files/pics/cdecomm/co_cde_shield_300_rgb-125x240.png'>
+                <img alt='Brand' src='assets/utah-logo.png'>
               </a>
-              <span class='customerName'>Colorado Department of Education</span>
+              <span class='customerName'>Financial Explorer</span>
             </div>
           </div>
           <div class='navbar-collapse collapse'>
-            <ul class='nav navbar-nav navbar-right'>
-              <li>
-                <a class='left-logo navbar-brand' href='#'>
-                  <img alt='Brand' src='http://www.wpsdk12.org/wp-content/uploads/2014/07/Financial-Transparency-icon.jpg'>
-                </a>
-              </li>
-            </ul>
+            <!-- %ul.nav.navbar-nav.navbar-right -->
+            <!-- %li -->
+            <!-- %a.left-logo.navbar-brand{ href: '#' } -->
+            <!-- %img{ alt: 'Brand', src: 'http://www.wpsdk12.org/wp-content/uploads/2014/07/Financial-Transparency-icon.jpg' } -->
           </div>
         </div>
       </nav>
       <div class='container-fluid'>
-        <div class='row'>
-          <div class='sub-navbar'>
-            <ul class='nav nav-pills'>
-              <li id='BOCES' role='presentation'>
-                <a href='#'>BOCES</a>
-              </li>
-              <li class='active' id='districts' role='presentation'>
-                <a href='#'>Districts</a>
-              </li>
-              <li id='schools' role='presentation'>
-                <a href='#'>Schools</a>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <!-- .row -->
+        <!-- .sub-navbar -->
+        <!-- %ul.nav.nav-pills -->
+        <!-- %li#BOCES{ role: 'presentation' } -->
+        <!-- %a{ href: '#' } BOCES -->
+        <!-- %li.active#districts{ role: 'presentation' } -->
+        <!-- %a{ href: '#' } Districts -->
+        <!-- %li#schools{ role: 'presentation' } -->
+        <!-- %a{ href: '#' } Schools -->
         <div class='row'>
           <div class='panels container-fluid nopadding'>
             <div class='left-panel col-sm-2'>
               <div class='smooth-panel'>
                 <div class='panel-header'>
-                  <div id='ListName'>List of Districts</div>
+                  <div id='ListName'>Counties</div>
                 </div>
                 <div class='panel-body panel-scroll'>
                   <ul id='regionlist'></ul>
@@ -179,5 +169,5 @@
       </div>
     </div>
   </body>
-  <script src='js/viz.js'></script>
+  <script src='js/geotest.js'></script>
 </html>
