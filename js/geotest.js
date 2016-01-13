@@ -15,7 +15,8 @@ function ColoradoMap(elementId) {
         // Use this to scale the map up/down depending on
         // size of map container.
         map.width = el.clientWidth;
-        map.height = (700 / 1200) * map.width;
+        map.height = (1000 / 1200) * map.width;
+        // map.height = el.clientHeight * map.width;
 
         console.log('Making map size: ' + map.width + 'x' + map.height);
 
@@ -300,6 +301,9 @@ function ColoradoMap(elementId) {
             .style("opacity", 0);
     };
     this.district_OnClick = function(d,i) {
+        console.log(d.properties.name);
+        console.log(i);
+        s = "Salt Lake County, UT"
       d3.select(".selected-region").classed("selected-region", false);
         d3.select(this).classed("selected-region",true);
 
@@ -307,33 +311,44 @@ function ColoradoMap(elementId) {
       $("#subregion-links .snippet").hide();
 
       // Populate the show me panel
-      $('#region-title').text("School District: "+d.properties.name);
 
       d3.select("#subregion-links").selectAll("ul").remove();
-
-      if (d.properties.schools == undefined) {
-        console.log( "No school data");
-         $('#showme-region').hide();
+        $('#showme-region').hide();
+      if (d.properties.name == "Salt Lake County, UT") {
+        $('#region-title').text(" County: "+d.properties.name);
+        $("#subregion-links .snippet").show();
+        $('#showme-region').show();
+        d3.select("#region-link1").html(
+            "<a href="+ d.properties.revenue_budget_link +
+            " target=\"_blank\"> District's Revenue Data </a>");
 
       } else {
-
-        $("#subregion-links .snippet").show();
-        d3.select("#subregion-links")
-          .append("ul").selectAll("li")
-         .data(d.properties.schools.sort())
-        .enter()
-          .append("li")
-          .text(function (d) {return d;})
-
-        d3.select("#region-link1").html("<a href="+ d.properties.revenue_budget_link +
-                    " target=\"_blank\"> District's Revenue Data </a>");
-        d3.select("#region-link2").html("<a href="+ d.properties.expenditure_budget_link +
-                   " target=\"_blank\">  District's Expenditure Data</a>");
-        d3.select("#region-link3").html("<a href="+ d.properties.expenditure_munetrix_link +
-                   " target=\"_blank\"> How " + d.properties.name + " Compares to the Regional Average Expenditure </a>");
-
-          $('#showme-region').show();
+        $('#showme-region').hide();
       }
+
+      // if (d.properties.name == undefined) {
+      //   console.log( "No school data");
+      //    $('#showme-region').hide();
+
+      // } else {
+
+        // $("#subregion-links .snippet").show();
+        // d3.select("#subregion-links")
+        //   .append("ul").selectAll("li")
+        //  .data(d.properties.schools.sort())
+        // .enter()
+        //   .append("li")
+        //   .text(function (d) {return d;})
+
+        // d3.select("#region-link1").html("<a href="+ d.properties.revenue_budget_link +
+        //             " target=\"_blank\"> District's Revenue Data </a>");
+        // d3.select("#region-link2").html("<a href="+ d.properties.expenditure_budget_link +
+        //            " target=\"_blank\">  District's Expenditure Data</a>");
+        // d3.select("#region-link3").html("<a href="+ d.properties.expenditure_munetrix_link +
+        //            " target=\"_blank\"> How " + d.properties.name + " Compares to the Regional Average Expenditure </a>");
+
+      //     $('#showme-region').show();
+      // }
     };
     this.district_Mouseover = function(d) {
       map.tooltip
@@ -401,4 +416,5 @@ function ColoradoMap(elementId) {
 }; // ColoradoMap
     var map = new ColoradoMap('map');
     map.initMap();
+    // $('#showme-region').show()
 });
