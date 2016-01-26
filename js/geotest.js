@@ -314,7 +314,7 @@ function ColoradoMap(elementId) {
 
       d3.select("#subregion-links").selectAll("ul").remove();
         $('#showme-region').hide();
-      if (d.properties.name == "Salt Lake County, UT") {
+      if (d.properties.name == "Davis County, UT") {
         $('#region-title').text(" County: "+d.properties.name);
         $("#subregion-links .snippet").show();
         $('#showme-region').show();
@@ -416,5 +416,5 @@ function ColoradoMap(elementId) {
 }; // ColoradoMap
     var map = new ColoradoMap('map');
     map.initMap();
-    // $('#showme-region').show()
 });
+    $('#showme-region').hide();

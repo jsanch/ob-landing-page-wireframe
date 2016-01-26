@@ -88,11 +88,11 @@
                         Revenues
                     .panel-body
                       .number
-                        $ 787 Million
+                        $ 72.13 Million
                       .description
-                        Overall Revenues For Local Agencies Throughout Utah
+                        Overall Revenues For Agencies Throughout Utah
                     .button-part
-                      %a.btn.btn-block.btn-primary.lighter{ href: 'http://finance.cdefinancialtransparency.com//#!/year/default/revenue/0/district_name', title: 'Explore Revenues', target: '_blank' }
+                      %a.btn.btn-block.btn-primary.lighter{ href: 'http://ut-auditor-revenues.spending.socrata.com/#!/year/2011/', title: 'Explore Revenues', target: '_blank' }
                         Explore
                         %span.ng-binding{ 'ng-bind' => 'revenueTitle' } Revenues
 
@@ -103,99 +103,100 @@
                         Expenditures
                     .panel-body
                       .number
-                        $ 644 Million
+                        $ 69.58 Million
                       .description
-                        Overall Expenditures For Local  Agencies Throughout Utah
+                        Overall Expenditures For  Agencies Throughout Utah
                     .button-part
-                      %a.btn.btn-block.btn-primary.lighter{ href: 'http://finance.cdefinancialtransparency.com//#!/year/default/operating/0/district_name', title: 'Explore Revenues', target: '_blank' }
+                      %a.btn.btn-block.btn-primary.lighter{ href: 'http://ut-auditor-expenditures.spending.socrata.com/#!/year/2011/', title: 'Explore Revenues', target: '_blank' }
                         Explore
                         %span.ng-binding{'ng-bind' => 'revenueTitle' } Expenditures
+
               .row
                 %br
                 .col-sm-1
                 .col-sm-10
-                  .box-panel#showme-region
+                  .box-panel#showme-region{:style => "display: none;"}
                     .panel-header
                       #region-title Region Title
                     .panel-body
                       #region-info
-                        Explore the County's Revenues and Expenditures by Cities:
+                        Explore the County's Revenues and Expenditures by Entity:
                       %ul
                         %li
-                          Bluffdale:
-                          %a{:href => "url", :target => "_blank"} Revenues
+                          Bountiful:
+                          %a{:href => "#"} Revenues
                           |
-                          %a{:href => "url", :target => "_blank"} Expenditures
+                          %a{:href => "#"} Expenditures
                         %li
-                          Cottonwood Heights:
-                          %a{:href => "url", :target => "_blank"} Revenues
+                          Centerville:
+                          %a{:href => "#"} Revenues
                           |
-                          %a{:href => "url", :target => "_blank"} Expenditures
+                          %a{:href => "#"} Expenditures
                         %li
-                          Draper:
-                          %a{:href => "url", :target => "_blank"} Revenues
+                          Clearfield:
+                          %a{:href => "#"} Revenues
                           |
-                          %a{:href => "url", :target => "_blank"} Expenditures
+                          %a{:href => "#"} Expenditures
                         %li
-                          Herriman:
-                          %a{:href => "url", :target => "_blank"} Revenues
+                          Clinton:
+                          %a{:href => "#"} Revenues
                           |
-                          %a{:href => "url", :target => "_blank"} Expenditures
+                          %a{:href => "#"} Expenditures
                         %li
-                          Holladay:
-                          %a{:href => "url", :target => "_blank"} Revenues
+                          Farmington:
+                          %a{:href => "http://ut-auditor-revenues.spending.socrata.com/#!/year/2011/explore/0-/entity/Farmington/0-/category", :target => "_blank"} Revenues
                           |
-                          %a{:href => "url", :target => "_blank"} Expenditures
+                          %a{:href => "/http://ut-auditor-expenditures.spending.socrata.com/#!/year/2011/explore/0/entity/Farmington/0/organization", :target => "_blank"} Expenditures
                         %li
-                          Midvale:
-                          %a{:href => "url", :target => "_blank"} Revenues
+                          Fruit Heights:
+                          %a{:href => "#"} Revenues
                           |
-                          %a{:href => "url", :target => "_blank"} Expenditures
+                          %a{:href => "#"} Expenditures
                         %li
-                          Murray:
-                          %a{:href => "url", :target => "_blank"} Revenues
+                          Kaysville:
+                          %a{:href => "#"} Revenues
                           |
-                          %a{:href => "url", :target => "_blank"} Expenditures
+                          %a{:href => "#"} Expenditures
                         %li
-                          Riverton:
-                          %a{:href => "url", :target => "_blank"} Revenues
+                          Layton:
+                          %a{:href => "#"} Revenues
                           |
-                          %a{:href => "url", :target => "_blank"} Expenditures
+                          %a{:href => "#"} Expenditures
                         %li
-                          Salt Lake City:
-                          %a{:href => "url", :target => "_blank"} Revenues
+                          North Salt Lake:
+                          %a{:href => "#"} Revenues
                           |
-                          %a{:href => "url", :target => "_blank"} Expenditures
+                          %a{:href => "#"} Expenditures
                         %li
-                          Sandy:
-                          %a{:href => "url", :target => "_blank"} Revenues
+                          South Weber:
+                          %a{:href => "#"} Revenues
                           |
-                          %a{:href => "url", :target => "_blank"} Expenditures
+                          %a{:href => "#"} Expenditures
                         %li
-                          South Jordan:
-                          %a{:href => "url", :target => "_blank"} Revenues
+                          Sunset:
+                          %a{:href => "#"} Revenues
                           |
-                          %a{:href => "url", :target => "_blank"} Expenditures
+                          %a{:href => "#"} Expenditures
                         %li
-                          South Salt Lake:
-                          %a{:href => "url", :target => "_blank"} Revenues
+                          Syracuse:
+                          %a{:href => "#"} Revenues
                           |
-                          %a{:href => "url", :target => "_blank"} Expenditures
+                          %a{:href => "#"} Expenditures
                         %li
-                          Taylorsville:
-                          %a{:href => "url", :target => "_blank"} Revenues
+                          West Bountiful:
+                          %a{:href => "#"} Revenues
                           |
-                          %a{:href => "url", :target => "_blank"} Expenditures
+                          %a{:href => "#"} Expenditures
                         %li
-                          West Jordan:
-                          %a{:href => "url", :target => "_blank"} Revenues
+                          West Point:
+                          %a{:href => "#"} Revenues
                           |
-                          %a{:href => "url", :target => "_blank"} Expenditures
+                          %a{:href => "#"} Expenditures
                         %li
-                          West Valley City:
-                          %a{:href => "url", :target => "_blank"} Revenues
+                          Woods Cross:
+                          %a{:href => "#"} Revenues
                           |
-                          %a{:href => "url", :target => "_blank"} Expenditures
+                          %a{:href => "#"} Expenditures
                 .col-sm-1
 
   %script{ src: 'js/geotest.js' }
