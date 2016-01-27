@@ -15,7 +15,7 @@ function ColoradoMap(elementId) {
         // Use this to scale the map up/down depending on
         // size of map container.
         map.width = el.clientWidth;
-        map.height = (1000 / 1200) * map.width;
+        map.height = (900 / 1200) * map.width;
         // map.height = el.clientHeight * map.width;
 
         console.log('Making map size: ' + map.width + 'x' + map.height);
@@ -136,7 +136,7 @@ function ColoradoMap(elementId) {
     this.getBOCESPoints = function () {
         var deferred = $.Deferred();
         var map = this;
-        d3.json('mapdata/ut-counties.geojson', function(error, response) {
+        d3.json('mapdata/michigan4.geojson', function(error, response) {
             map.BOCESPoints = response;
             deferred.resolve();
         });
@@ -177,7 +177,7 @@ function ColoradoMap(elementId) {
     this.getDistricts = function() {
         var deferred = $.Deferred();
         var map = this;
-        d3.json('mapdata/ut-counties.geojson', function(error, response) {
+        d3.json('mapdata/michigan4.geojson', function(error, response) {
             map.Districts = response;
             deferred.resolve();
         });
@@ -314,7 +314,7 @@ function ColoradoMap(elementId) {
 
       d3.select("#subregion-links").selectAll("ul").remove();
         $('#showme-region').hide();
-      if (d.properties.name == "Davis County, UT") {
+      if (d.properties.name == "Marquette") {
         $('#region-title').text(" County: "+d.properties.name);
         $("#subregion-links .snippet").show();
         $('#showme-region').show();
@@ -418,3 +418,53 @@ function ColoradoMap(elementId) {
     map.initMap();
 });
     $('#showme-region').hide();
+
+d3.json('https://sheetsu.com/apis/0c7f8c07', function(error, response) {
+    var myList = response.result;
+
+});
+
+
+// Builds the HTML Table out of myList json data from Ivy restful service.
+ function buildHtmlTable() {
+    d3.json('https://sheetsu.com/apis/0c7f8c07', function(error, response) {
+    var myList = response.result;
+    console.log(myList);
+
+     var columns = addAllColumnHeaders(myList);
+
+     for (var i = 0 ; i < myList.length ; i++) {
+         var row$ = $('<tr/>');
+         for (var colIndex = 0 ; colIndex < columns.length ; colIndex++) {
+             var cellValue = myList[i][columns[colIndex]];
+
+             if (cellValue == null) { cellValue = ""; }
+
+             row$.append($('<td/>').html(cellValue));
+         }
+         $("#excelDataTable").append(row$);
+     }
+     });
+ }
+
+ // Adds a header row to the table and returns the set of columns.
+ // Need to do union of keys from all records as some records may not contain
+ // all records
+ function addAllColumnHeaders(myList)
+ {
+     var columnSet = [];
+     var headerTr$ = $('<tr/>');
+
+     for (var i = 0 ; i < myList.length ; i++) {
+         var rowHash = myList[i];
+         for (var key in rowHash) {
+             if ($.inArray(key, columnSet) == -1){
+                 columnSet.push(key);
+                 headerTr$.append($('<th/>').html(key));
+             }
+         }
+     }
+     $("#excelDataTable").append(headerTr$);
+
+     return columnSet;
+ }

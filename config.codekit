@@ -35,6 +35,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/assets\/mich.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2430,
+		"inputAbbreviatedPath": "\/assets\/mich.png",
+		"outputAbbreviatedPath": "\/assets\/mich.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/assets\/utah-logo.png": {
 		"fileType": 32768,
 		"ignore": 0,

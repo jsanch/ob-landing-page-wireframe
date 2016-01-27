@@ -5,7 +5,7 @@
     <script charset='utf-8' src='js/topojson.v1.js'></script>
     <script charset='utf-8' src='js/moment.js'></script>
     <meta charset='utf-8'>
-    <title>Utah | Transparency Map</title>
+    <title>Michigan | Transparency Map</title>
     <!-- Favicon -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <!-- ** BOOTSTRAP **/ -->
@@ -19,18 +19,21 @@
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href='css/style2.css' rel='stylesheet' type='text/css'>
   </head>
-  <body>
+  <body onload='buildHtmlTable()'>
     <div class='main-component'>
       <nav class='navbar navbar-default'>
         <div class='container-fluid'>
           <div class='navbar-header'>
             <div class='logo-container'>
               <a class='logo navbar-brand' href='#'>
-                <img alt='Brand' src='assets/bwlogo.png'>
+                <img alt='Brand' src='assets/mich.png'>
               </a>
-              <span class='customerName'>Utah's Financial Explorer</span>
+              <span class='customerName'>Michigan's Financial Explorer</span>
             </div>
           </div>
+          <p class='navbar-text navbar-right compare'>
+            <a class='navbar-link' href='http://www.opendatanetwork.com/region/0400000US26-1600000US2622000-1600000US2646000-1600000US2634000-1600000US2603000/Michigan-Detroit_MI-Lansing_MI-Grand_Rapids_MI-Ann_Arbor_MI/education/percent_high_school_graduate_or_higher/2013#'>Compare Michigan in ODN</a>
+          </p>
           <div class='navbar-collapse collapse'>
             <!-- %ul.nav.navbar-nav.navbar-right -->
             <!-- %li -->
@@ -63,7 +66,7 @@
             </div>
             <div class='middle-panel col-md-5 nopadding'>
               <div class='map-title'>
-                <h3>Utah Counties Map</h3>
+                <h3>Michigan Counties Map</h3>
               </div>
               <div class='map-container'>
                 <div id='map'></div>
@@ -97,11 +100,11 @@
                         $ 72.13 Million
                       </div>
                       <div class='description'>
-                        Overall Revenues For Agencies Throughout Utah
+                        Overall Revenues For Agencies Throughout Michigan
                       </div>
                     </div>
                     <div class='button-part'>
-                      <a class='btn btn-block btn-primary lighter' href='http://ut-auditor-revenues.spending.socrata.com/#!/year/2011/' target='_blank' title='Explore Revenues'>
+                      <a class='btn btn-block btn-primary lighter' href='http://spending.michigan.gov/#!/year/2015/' target='_blank' title='Explore Revenues'>
                         Explore
                         <span class='ng-binding' ng-bind='revenueTitle'>Revenues</span>
                       </a>
@@ -120,11 +123,11 @@
                         $ 69.58 Million
                       </div>
                       <div class='description'>
-                        Overall Expenditures For  Agencies Throughout Utah
+                        Overall Expenditures For  Agencies Throughout Michigan
                       </div>
                     </div>
                     <div class='button-part'>
-                      <a class='btn btn-block btn-primary lighter' href='http://ut-auditor-expenditures.spending.socrata.com/#!/year/2011/' target='_blank' title='Explore Revenues'>
+                      <a class='btn btn-block btn-primary lighter' href='http://spending.michigan.gov/#!/year/2015/' target='_blank' title='Explore Revenues'>
                         Explore
                         <span class='ng-binding' ng-bind='revenueTitle'>Expenditures</span>
                       </a>
@@ -135,107 +138,15 @@
               <div class='row'>
                 <br>
                 <div class='col-sm-1'></div>
-                <div class='col-sm-10'>
-                  <div class='box-panel' id='showme-region' style='display: none;'>
+                <div class='col-sm-12'>
+                  <div class='box-panel-special' id='showme-region' style='display: none;'>
                     <div class='panel-header'>
                       <div id='region-title'>Region Title</div>
                     </div>
-                    <div class='panel-body'>
+                    <div class='panel-body-special'>
                       <div id='region-info'>
-                        Explore the County's Revenues and Expenditures by Entity:
+                        <table id='excelDataTable'></table>
                       </div>
-                      <ul>
-                        <li>
-                          Bountiful:
-                          <a href='#'>Revenues</a>
-                          |
-                          <a href='#'>Expenditures</a>
-                        </li>
-                        <li>
-                          Centerville:
-                          <a href='#'>Revenues</a>
-                          |
-                          <a href='#'>Expenditures</a>
-                        </li>
-                        <li>
-                          Clearfield:
-                          <a href='#'>Revenues</a>
-                          |
-                          <a href='#'>Expenditures</a>
-                        </li>
-                        <li>
-                          Clinton:
-                          <a href='#'>Revenues</a>
-                          |
-                          <a href='#'>Expenditures</a>
-                        </li>
-                        <li>
-                          Farmington:
-                          <a href='http://ut-auditor-revenues.spending.socrata.com/#!/year/2011/explore/0-/entity/Farmington/0-/category' target='_blank'>Revenues</a>
-                          |
-                          <a href='/http://ut-auditor-expenditures.spending.socrata.com/#!/year/2011/explore/0/entity/Farmington/0/organization' target='_blank'>Expenditures</a>
-                        </li>
-                        <li>
-                          Fruit Heights:
-                          <a href='#'>Revenues</a>
-                          |
-                          <a href='#'>Expenditures</a>
-                        </li>
-                        <li>
-                          Kaysville:
-                          <a href='#'>Revenues</a>
-                          |
-                          <a href='#'>Expenditures</a>
-                        </li>
-                        <li>
-                          Layton:
-                          <a href='#'>Revenues</a>
-                          |
-                          <a href='#'>Expenditures</a>
-                        </li>
-                        <li>
-                          North Salt Lake:
-                          <a href='#'>Revenues</a>
-                          |
-                          <a href='#'>Expenditures</a>
-                        </li>
-                        <li>
-                          South Weber:
-                          <a href='#'>Revenues</a>
-                          |
-                          <a href='#'>Expenditures</a>
-                        </li>
-                        <li>
-                          Sunset:
-                          <a href='#'>Revenues</a>
-                          |
-                          <a href='#'>Expenditures</a>
-                        </li>
-                        <li>
-                          Syracuse:
-                          <a href='#'>Revenues</a>
-                          |
-                          <a href='#'>Expenditures</a>
-                        </li>
-                        <li>
-                          West Bountiful:
-                          <a href='#'>Revenues</a>
-                          |
-                          <a href='#'>Expenditures</a>
-                        </li>
-                        <li>
-                          West Point:
-                          <a href='#'>Revenues</a>
-                          |
-                          <a href='#'>Expenditures</a>
-                        </li>
-                        <li>
-                          Woods Cross:
-                          <a href='#'>Revenues</a>
-                          |
-                          <a href='#'>Expenditures</a>
-                        </li>
-                      </ul>
                     </div>
                   </div>
                 </div>

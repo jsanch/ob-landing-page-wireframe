@@ -6,7 +6,7 @@
     %script{ charset: 'utf-8', src: 'js/moment.js' }
     %meta{ charset: 'utf-8' }
 
-    %title Utah | Transparency Map
+    %title Michigan | Transparency Map
 
     / Favicon
     %link{ href: 'http://fonts.googleapis.com/css?family=Open+Sans', rel: 'stylesheet', type: 'text/css' }
@@ -25,15 +25,18 @@
     %link{ href: 'css/style2.css', rel: 'stylesheet', type: 'text/css' }
 
 
-  %body
+  %body{:onload => "buildHtmlTable()"}
     .main-component
       %nav.navbar.navbar-default
         .container-fluid
           .navbar-header
             .logo-container
               %a.logo.navbar-brand{ href: '#' }
-                %img{ alt: 'Brand', src: 'assets/bwlogo.png' }
-              %span.customerName Utah's Financial Explorer
+                %img{ alt: 'Brand', src: 'assets/mich.png' }
+              %span.customerName Michigan's Financial Explorer
+          %p.navbar-text.navbar-right.compare
+            %a.navbar-link{:href => "http://www.opendatanetwork.com/region/0400000US26-1600000US2622000-1600000US2646000-1600000US2634000-1600000US2603000/Michigan-Detroit_MI-Lansing_MI-Grand_Rapids_MI-Ann_Arbor_MI/education/percent_high_school_graduate_or_higher/2013#"} Compare Michigan in ODN
+
           .navbar-collapse.collapse
             / %ul.nav.navbar-nav.navbar-right
             /   %li
@@ -62,7 +65,7 @@
 
             .middle-panel.col-md-5.nopadding
               .map-title
-                %h3 Utah Counties Map
+                %h3 Michigan Counties Map
               .map-container
                 #map
               .map-description
@@ -90,9 +93,9 @@
                       .number
                         $ 72.13 Million
                       .description
-                        Overall Revenues For Agencies Throughout Utah
+                        Overall Revenues For Agencies Throughout Michigan
                     .button-part
-                      %a.btn.btn-block.btn-primary.lighter{ href: 'http://ut-auditor-revenues.spending.socrata.com/#!/year/2011/', title: 'Explore Revenues', target: '_blank' }
+                      %a.btn.btn-block.btn-primary.lighter{ href: 'http://spending.michigan.gov/#!/year/2015/', title: 'Explore Revenues', target: '_blank' }
                         Explore
                         %span.ng-binding{ 'ng-bind' => 'revenueTitle' } Revenues
 
@@ -105,98 +108,23 @@
                       .number
                         $ 69.58 Million
                       .description
-                        Overall Expenditures For  Agencies Throughout Utah
+                        Overall Expenditures For  Agencies Throughout Michigan
                     .button-part
-                      %a.btn.btn-block.btn-primary.lighter{ href: 'http://ut-auditor-expenditures.spending.socrata.com/#!/year/2011/', title: 'Explore Revenues', target: '_blank' }
+                      %a.btn.btn-block.btn-primary.lighter{ href: 'http://spending.michigan.gov/#!/year/2015/', title: 'Explore Revenues', target: '_blank' }
                         Explore
                         %span.ng-binding{'ng-bind' => 'revenueTitle' } Expenditures
 
               .row
                 %br
                 .col-sm-1
-                .col-sm-10
-                  .box-panel#showme-region{:style => "display: none;"}
+                .col-sm-12
+                  .box-panel-special#showme-region{:style => "display: none;"}
                     .panel-header
                       #region-title Region Title
-                    .panel-body
+                    .panel-body-special
                       #region-info
-                        Explore the County's Revenues and Expenditures by Entity:
-                      %ul
-                        %li
-                          Bountiful:
-                          %a{:href => "#"} Revenues
-                          |
-                          %a{:href => "#"} Expenditures
-                        %li
-                          Centerville:
-                          %a{:href => "#"} Revenues
-                          |
-                          %a{:href => "#"} Expenditures
-                        %li
-                          Clearfield:
-                          %a{:href => "#"} Revenues
-                          |
-                          %a{:href => "#"} Expenditures
-                        %li
-                          Clinton:
-                          %a{:href => "#"} Revenues
-                          |
-                          %a{:href => "#"} Expenditures
-                        %li
-                          Farmington:
-                          %a{:href => "http://ut-auditor-revenues.spending.socrata.com/#!/year/2011/explore/0-/entity/Farmington/0-/category", :target => "_blank"} Revenues
-                          |
-                          %a{:href => "/http://ut-auditor-expenditures.spending.socrata.com/#!/year/2011/explore/0/entity/Farmington/0/organization", :target => "_blank"} Expenditures
-                        %li
-                          Fruit Heights:
-                          %a{:href => "#"} Revenues
-                          |
-                          %a{:href => "#"} Expenditures
-                        %li
-                          Kaysville:
-                          %a{:href => "#"} Revenues
-                          |
-                          %a{:href => "#"} Expenditures
-                        %li
-                          Layton:
-                          %a{:href => "#"} Revenues
-                          |
-                          %a{:href => "#"} Expenditures
-                        %li
-                          North Salt Lake:
-                          %a{:href => "#"} Revenues
-                          |
-                          %a{:href => "#"} Expenditures
-                        %li
-                          South Weber:
-                          %a{:href => "#"} Revenues
-                          |
-                          %a{:href => "#"} Expenditures
-                        %li
-                          Sunset:
-                          %a{:href => "#"} Revenues
-                          |
-                          %a{:href => "#"} Expenditures
-                        %li
-                          Syracuse:
-                          %a{:href => "#"} Revenues
-                          |
-                          %a{:href => "#"} Expenditures
-                        %li
-                          West Bountiful:
-                          %a{:href => "#"} Revenues
-                          |
-                          %a{:href => "#"} Expenditures
-                        %li
-                          West Point:
-                          %a{:href => "#"} Revenues
-                          |
-                          %a{:href => "#"} Expenditures
-                        %li
-                          Woods Cross:
-                          %a{:href => "#"} Revenues
-                          |
-                          %a{:href => "#"} Expenditures
+                        %table#excelDataTable{}
+
                 .col-sm-1
 
   %script{ src: 'js/geotest.js' }
