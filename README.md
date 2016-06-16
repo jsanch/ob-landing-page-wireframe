@@ -1,1 +1,0 @@
-Utah geojson source: http://catalog.civicdashboards.com/dataset/495eddf8-9973-4e50-92aa-682f4fa419cb/resource/f6e91dae-50e3-45fa-a680-58b9ae3712bf/download/aec86088a03b45a48ef701d17225d0a7temp.geojson
