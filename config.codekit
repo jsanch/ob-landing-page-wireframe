@@ -136,31 +136,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/geotest.haml": {
-		"escapeHTMLCharacters": 0,
-		"fileType": 256,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/geotest.haml",
-		"noEscapeInAttributes": 0,
-		"outputAbbreviatedPath": "\/geotest.html",
-		"outputFormat": 2,
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
-		"useCDATA": 0,
-		"useDoubleQuotes": 0,
-		"useUnixNewlines": 0
-		},
-	"\/geotest.html": {
-		"fileType": 8192,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/geotest.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/index.haml": {
 		"escapeHTMLCharacters": 0,
 		"fileType": 256,
@@ -317,31 +292,6 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
-		},
-	"\/layout.haml": {
-		"escapeHTMLCharacters": 0,
-		"fileType": 256,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/layout.haml",
-		"noEscapeInAttributes": 0,
-		"outputAbbreviatedPath": "\/layout.html",
-		"outputFormat": 2,
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
-		"useCDATA": 0,
-		"useDoubleQuotes": 0,
-		"useUnixNewlines": 0
-		},
-	"\/layout.html": {
-		"fileType": 8192,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/layout.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
 		},
 	"\/mapdata\/BOCES.json": {
 		"fileType": 524288,

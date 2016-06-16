@@ -1,6 +1,6 @@
 $( document ).ready(function() {
 
-function ColoradoMap(elementId) {
+function MichiganMap(elementId) {
 
     this.divId = elementId;
     this.divSelector = '#' + elementId;
@@ -11,12 +11,11 @@ function ColoradoMap(elementId) {
         var map = this;
         var el = document.getElementById(map.divId);
 
-        // Colorado Map Dimensions: 960x1200 (width x height)
+        // Map Dimensions: 960x1200 (width x height)
         // Use this to scale the map up/down depending on
         // size of map container.
         map.width = el.clientWidth;
         map.height = (900 / 1200) * map.width;
-        // map.height = el.clientHeight * map.width;
 
         console.log('Making map size: ' + map.width + 'x' + map.height);
 
@@ -32,80 +31,15 @@ function ColoradoMap(elementId) {
         map.layer1 = map.svg.append('g');
         map.layer2 = map.svg.append('g');
 
-        map.getRSA().then(function() {
-            map.getDistricts().then(function() {
-                map.getBOCESPoints().then(function(){
-                    map.centerMapProjection();
-
-                    map.drawDistricts();
-                    map.animateDistricts();
-
-                    map.addDistrictList();
-
-                   // $("#checkbox158").click(function() {
-                   //    d3.select(".selected-region").classed("selected-region", false);
-                   //    d3.select("#district_70").classed("selected-region",true);
-
-                   //    $("#subregion-links .snippet").hide();
-                   //    // Populate the show me panel
-                   //    $('#region-title').text("School District: Thunder Mountain");
-                   //    d3.select("#subregion-links").selectAll("ul").remove();
-
-                   //    $("#subregion-links .snippet").show();
-                   //    var schools = ["Falmouth School","Harker School","Menlo School","Pittsfield School","Thunder Mountain School District","West Colorado School"];
-                   //    d3.select("#subregion-links")
-                   //      .append("ul").selectAll("li")
-                   //     .data(schools)
-                   //    .enter()
-                   //      .append("li")
-                   //      .text(function (d) {return d;})
-                   //    d3.select("#region-link1").html("<a href=\"http://finance.cdefinancialtransparency.com/#!/year/default/revenue/0/district_name/Thunder+Mountain/0/loc_title\" target=\"_blank\"> District's Revenue Data </a>");
-                   //    d3.select("#region-link2").html("<a href=\"http://finance.cdefinancialtransparency.com/#!/year/default/operating/0/district_name/Thunder+Mountain/0/loc_title\" target=\"_blank\">  District's Expenditure Data</a>");
-                   //    d3.select("#region-link3").html("<a href=\"http://dev.munetrix.com/sections/charts_sd/chhowallocates.php?AnnualDataID=25094&Orientation=Function&FundCode=1\" target=\"_blank\"> How Thunder Mountain Compares to the Regional Average Expenditure </a>");
-                   //      $('#showme-region').show();
-                   //  });
-                });
-            });
+        map.getCounties().then(function() {
+                map.centerMapProjection();
+                map.drawCounties();
+                map.animateCounties();
+                map.addDistrictList();
         });
 
-        $('#BOCES').click(function() {
-            map.clear();
-            map.drawBOCES();
-            map.animateBOCES();
+    };
 
-            d3.select(".active").classed("active", false);
-            d3.select(this).classed("active",true);
-
-            d3.select("#ListName").text("List Of BOCES");
-            d3.select("#RegionName").text("BOCES");
-
-            map.regionList.selectAll("li").remove();
-            map.addBOCESList();
-
-              $('#showme-region').hide();
-                    $("#subregion-links .snippet").hide();
-        });
-        $('#districts').click(function() {
-            map.clear();
-            map.drawDistricts();
-            map.animateDistricts();
-            d3.select(".active").classed("active", false);
-            d3.select(this).classed("active",true);
-
-            d3.select("#ListName").text("List of Districts");
-            d3.select("#RegionName").text("Districts");
-
-            // Remove previous list, add new one.
-            map.regionList.selectAll("li").remove();
-            map.addDistrictList();
-
-              $('#showme-region').hide();
-                    $("#subregion-links .snippet").hide();
-        });
-        $('#showme-region').hide();
-        map.initTooltip();
-
-    }; // initMap
     this.clear = function() {
         // Clear out the svg data from the foreground and
         // background group elements
@@ -115,107 +49,51 @@ function ColoradoMap(elementId) {
     this.drawALL = function() {
         var map = this;
         map.centerMapProjection();
-
-        map.drawDistricts();
-        map.animateDistricts();
-
-        setTimeout(function (){
-            map.drawBOCES();
-            map.animateBOCES();
-        }, 3000);
+        map.drawCounties();
+        map.animateCounties();
     };
-    this.getRSA = function() {
-        var deferred = $.Deferred();
-        var map = this;
-        d3.json('mapdata/BOCES.json', function(error, response) {
-            map.RSA = response;
-            deferred.resolve();
-        });
-        return deferred.promise();
-    };
-    this.getBOCESPoints = function () {
+
+    this.getCounties = function() {
         var deferred = $.Deferred();
         var map = this;
         d3.json('mapdata/michigan4.geojson', function(error, response) {
-            map.BOCESPoints = response;
+            map.Counties = response;
             deferred.resolve();
         });
         return deferred.promise();
     };
-    this.drawBOCES = function() {
+    this.drawCounties = function() {
         var map = this;
-        var rsa =  map.layer2.selectAll('path')
-              .data(map.RSA.features)
-              .enter().append('path')
-              .attr('id', function(d, i) {
-                  return 'BOCES_' + d.properties['OBJECTID'];
-              })
-              .attr('class','RSA')
-              .attr({
-                  'stroke': '#999',
-                  'stroke-width': 3,
-                  'd': map.path
-              })
-        var circle = map.layer2.selectAll('circle')
-              .data(map.BOCESPoints.features)
-              .enter()
-              .append('circle')
-              .attr("cx", function(d) {
-                return -5 + map.projection([d.properties['LONGITUDE'],d.properties['LATITUDE'] ])[0]; })
-              .attr("cy", function (d) {
-                return -8 + map.projection([d.properties['LONGITUDE'],d.properties['LATITUDE'] ])[1]; })
-              .attr("r", "10px")
-              .attr('class','BOCES')
-              .on('mouseover',map.BOCES_Mouseover)
-              .on('click', map.BOCES_OnClick)
-    };
-    this.animateBOCES = function() {
-        map.layer2.selectAll('path').each(function(d, i) {
-            map.animate('#BOCES_' + d.properties['OBJECTID']);
-        });
-    };
-    this.getDistricts = function() {
-        var deferred = $.Deferred();
-        var map = this;
-        d3.json('mapdata/michigan4.geojson', function(error, response) {
-            map.Districts = response;
-            deferred.resolve();
-        });
-        return deferred.promise();
-    };
-    this.drawDistricts = function() {
-        var map = this;
-
         map.layer1.selectAll('path')
-            .data(map.Districts.features)
+            .data(map.Counties.features)
             .enter().append('path')
             .attr('id', function(d, i) {
-                return 'district_' + d.properties.geoid;
+                return 'county_' + d.properties.geoid;
             })
-            .attr('class', 'district')
+            .attr('class', 'county')
             .attr({
                 'stroke': '#999',
                 'stroke-width': 1,
                 'd': map.path
             })
-            .on('mouseover', map.district_Mouseover)
-            .on('click', map.district_OnClick)
-            .on('mouseout', map.district_Mouseout)
+            .on('mouseover', map.county_Mouseover)
+            .on('click', map.county_OnClick)
+            .on('mouseout', map.county_Mouseout)
     };
-    this.animateDistricts = function() {
+    this.animateCounties = function() {
         map.layer1.selectAll('path').each(function(d, i) {
-            map.animate('#district_' + d.properties.geoid);
+            map.animate('#county_' + d.properties.geoid);
         });
     };
     this.centerMapProjection = function(){
         // Since we picked the conicConformal projection, we need to also
         // rotate the map so our map doesn't look funky.
-        var centroid = d3.geo.centroid(map.Districts.features[0]);
+        var centroid = d3.geo.centroid(map.Counties.features[0]);
         var r = [centroid[0] * -1, centroid[1] * -1];
         // Start the projection from defaults (looking at Ohio)
         map.projection.scale(1).translate([0, 0]).rotate(r);
 
-        var b = map.path.bounds(map.Districts),
+        var b = map.path.bounds(map.Counties),
             s = 0.95 / Math.max((b[1][0] - b[0][0]) / map.width, (b[1][1] - b[0][1]) / map.height),
             t = [(map.width - s * (b[1][0] + b[0][0])) / 2, (map.height - s * (b[1][1] + b[0][1])) / 2];
 
@@ -300,7 +178,7 @@ function ColoradoMap(elementId) {
             .duration(500)
             .style("opacity", 0);
     };
-    this.district_OnClick = function(d,i) {
+    this.county_OnClick = function(d,i) {
         console.log(d.properties.name);
         console.log(i);
         s = "Salt Lake County, UT"
@@ -325,32 +203,8 @@ function ColoradoMap(elementId) {
       } else {
         $('#showme-region').hide();
       }
-
-      // if (d.properties.name == undefined) {
-      //   console.log( "No school data");
-      //    $('#showme-region').hide();
-
-      // } else {
-
-        // $("#subregion-links .snippet").show();
-        // d3.select("#subregion-links")
-        //   .append("ul").selectAll("li")
-        //  .data(d.properties.schools.sort())
-        // .enter()
-        //   .append("li")
-        //   .text(function (d) {return d;})
-
-        // d3.select("#region-link1").html("<a href="+ d.properties.revenue_budget_link +
-        //             " target=\"_blank\"> District's Revenue Data </a>");
-        // d3.select("#region-link2").html("<a href="+ d.properties.expenditure_budget_link +
-        //            " target=\"_blank\">  District's Expenditure Data</a>");
-        // d3.select("#region-link3").html("<a href="+ d.properties.expenditure_munetrix_link +
-        //            " target=\"_blank\"> How " + d.properties.name + " Compares to the Regional Average Expenditure </a>");
-
-      //     $('#showme-region').show();
-      // }
     };
-    this.district_Mouseover = function(d) {
+    this.county_Mouseover = function(d) {
       map.tooltip
             .transition()
             .duration(200)
@@ -360,7 +214,7 @@ function ColoradoMap(elementId) {
           .style("left", (d3.event.pageX + 28) + "px")
           .style("top", (d3.event.pageY - 28 ) + "px");
     };
-    this.district_Mouseout= function(d) {
+    this.county_Mouseout= function(d) {
       map.tooltip.transition()
             .duration(500)
             .style("opacity", 0);
@@ -368,9 +222,9 @@ function ColoradoMap(elementId) {
     // District / BOSE / School List
     this.addDistrictList = function() {
       newlist = [];
-      for (var i = map.Districts.features.length - 1; i >= 0; i--) {
+      for (var i = map.Counties.features.length - 1; i >= 0; i--) {
         newlist.push(
-          map.Districts.features[i].properties.name
+          map.Counties.features[i].properties.name
           );
       };
 
@@ -412,9 +266,10 @@ function ColoradoMap(elementId) {
           .append("label")
             .attr("for", function(d,i) {return "checkbox" + i; })
             .text(function(d) { return d});
+        };
     };
-}; // ColoradoMap
-    var map = new ColoradoMap('map');
+// MichiganMap
+    var map = new MichiganMap('map');
     map.initMap();
 });
     $('#showme-region').hide();

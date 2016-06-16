@@ -287,7 +287,7 @@ padding: 12px 15px;
  *
  */
 
-.district {
+.county {
     cursor: pointer;
     fill: #66696c;
     fill-opacity: 0;
@@ -297,7 +297,7 @@ padding: 12px 15px;
     stroke-linejoin: miter;
     stroke-opacity: 1.0;
     stroke-width: 0.5px;}
-.district:hover {
+.county:hover {
     fill: #C1C1C1;
     fill-opacity: 0.25;}
 .RSA {
