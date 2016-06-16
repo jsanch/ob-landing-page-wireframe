@@ -151,7 +151,7 @@
 		},
 	"\/js\/min\/geotest-min.js": {
 		"fileType": 64,
-		"ignore": 1,
+		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/min\/geotest-min.js",
 		"outputAbbreviatedPath": "\/js\/min\/min\/geotest-min-min.js",
